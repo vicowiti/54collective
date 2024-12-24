@@ -102,19 +102,13 @@ const Navbar = () => {
                   <Disclosure.Button
                     as="a"
                     href="#"
-                    className="block rounded-md bg-indigo-800 px-3 py-2 text-base font-medium text-white"
+                    className="block rounded-md  px-3 py-2 text-base font-medium text-white"
                   >
-                    Dashboard
+                    Home
                   </Disclosure.Button>
-                  <Disclosure.Button
-                    as="a"
-                    href="#"
-                    className="mt-1 block rounded-md px-3 py-2 text-base font-medium text-indigo-200 hover:bg-indigo-600 hover:text-indigo-100"
-                  >
-                    Support
-                  </Disclosure.Button>
+                 
                 </div>
-                <div className="border-t border-indigo-800 pt-4 pb-3">
+                <div className="border-t border-[#f4f4f4] pt-4 pb-3">
                   <div className="px-2">
                     <Disclosure.Button
                       as="a"
@@ -123,13 +117,7 @@ const Navbar = () => {
                     >
                       Your Profile
                     </Disclosure.Button>
-                    <Disclosure.Button
-                      as="a"
-                      href="#"
-                      className="mt-1 block rounded-md px-3 py-2 text-base font-medium text-indigo-200 hover:bg-indigo-600 hover:text-indigo-100"
-                    >
-                      Settings
-                    </Disclosure.Button>
+                   
                     <Disclosure.Button
                       as="a"
                       href="#"

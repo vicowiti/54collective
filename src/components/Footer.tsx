@@ -27,7 +27,7 @@ const Footer = () => {
           </div>
         </div>
         <div className="w-full flex justify-center flex-col items-center">
-          <hr className="w-full p-1 bg-[#f4f4f4 text-red-600" />
+          <hr className="w-full p-1 bg-[#f4f4f4 my-2" />
           <h6>&copy; 54 Collective {new Date().getFullYear()}</h6>
         </div>
       </div>
