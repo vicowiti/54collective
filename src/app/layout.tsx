@@ -1,17 +1,26 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Poppins } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
-// import Footer from "@/components/Footer";
+import Footer from "@/components/Footer";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+
+const poppins = Poppins({
   subsets: ["latin"],
+  weight: [
+    "100", // Thin
+    "200", // Extra Light
+    "300", // Light
+    "400", // Regular
+    "500", // Medium
+    "600", // Semi Bold
+    "700", // Bold
+    "800", // Extra Bold
+    "900", // Black
+  ], // Customize the font weights you need
+  style: ["normal", "italic"], // Optional: Include italic if needed
+  variable: "--font-poppins", // Use CSS variable for custom usage
 });
 
 export const metadata: Metadata = {
@@ -30,11 +39,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased `}
+        className={` ${poppins.variable} antialiased `}
       >
         <Navbar />
         <div className="mainbody w-full  mx-auto">{children}</div>
-        {/* <Footer /> */}
+        <Footer />
       </body>
     </html>
   );
