@@ -4,11 +4,12 @@
 
 html {
   background-color: #f4f4d4;
-  font-family: 'Poppins', sans-serif;;
+  font-family: 'Poppins', sans-serif;
 }
 
 .mainbody {
   color: #252a34;
   max-width: 1320px;
   margin: auto;
+  box-sizing: border-box;
 }
