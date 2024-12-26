@@ -7,7 +7,7 @@ const Profile = () => {
         <div className="bg-gradient-to-r from-[#64B500] to-[#B0DE77] p-20 rounded-t-xl"></div>
         <div className="bg-white p-20 rounded-t-xl"></div>
       </div>
-      <div className="border rounded-2xl p-10 sm:p-10">
+      <div className="border rounded-2xl p-4 sm:p-10">
         <header className="flex justify-between">
           <h3 className="font-bold text-xl">Personal Information</h3>
           <button className="px-3 py-2 border rounded-lg">Edit</button>
