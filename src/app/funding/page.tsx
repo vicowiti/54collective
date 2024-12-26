@@ -1,46 +1,4 @@
-// import { fundingPrograms } from "@/data/fundingData";
 
-// const Funding = () => {
-//   return (
-//     <div className="p-4">
-//       <table className="w-full">
-//         <thead className="bg-[#80C22F] py-3 text-white font-bold text-lg">
-//           <tr className="">
-//             <th className="py-3 px-4">Name</th>
-//             <th className="py-3 px-4">Industry</th>
-//             <th className="py-3 px-4">Region</th>
-//             <th className="py-3 px-4">Business Stage</th>
-//             <th className="py-3 px-4">Funding Type</th>
-//             <th className="py-3 px-4">Amount</th>
-//             <th className="py-3 px-4">Actions</th>
-//           </tr>
-//         </thead>
-//         <tbody>
-//           {fundingPrograms.map((program, index) => (
-//             <tr key={index} className="border-b border-[#D5D5D5]">
-//               <td className="p-3">{program.name}</td>
-//               <td className="p-3">{program.industryFocus}</td>
-//               <td className="p-3">{program.locations.join(", ")}</td>
-//               <td className="p-3">{program.entrepreneurialStage}</td>
-//               <td className="p-3">{program.nonMonetarySupport.join(", ")}</td>
-//               <td className="p-3">
-//                 {program.amount.min} - {program.amount.max}{" "}
-//                 {program.amount.currency}
-//               </td>
-//               <td className="p-3">
-//                 <button className="text-[#80C22F] whitespace-nowrap border flex border-[#80C22F] p-3 rounded-md">
-//                   View Details
-//                 </button>
-//               </td>
-//             </tr>
-//           ))}
-//         </tbody>
-//       </table>
-//     </div>
-//   );
-// };
-
-// export default Funding;
 
 import EsoModal from "@/components/ESOModal";
 import { fundingPrograms } from "@/data/fundingData";

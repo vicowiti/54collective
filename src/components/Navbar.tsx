@@ -73,14 +73,14 @@ const Navbar = () => {
                   <div className="hidden lg:block ">
                     <div className="flex items-center justify-end">
                       <div className="flex">
-                        <a
-                          href="#"
+                        <Link
+                          href="/funding"
                           className="rounded-md px-3 py-2 text-sm font-medium text-indigo-200 hover:text-white"
                         >
                           Solutions
-                        </a>
+                        </Link>
                         <a
-                          href="#"
+                          href="/support"
                           className="rounded-md px-3 py-2 text-sm font-medium text-indigo-200 hover:text-white"
                         >
                           Resources
