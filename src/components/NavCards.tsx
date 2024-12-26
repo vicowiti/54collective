@@ -1,6 +1,7 @@
 import { navCards } from "@/data/navCards";
+import Link from "next/link";
 
-const NavCard = () => {
+const NavCards = () => {
   return (
     <div className="py-16 grid grid-cols-1 sm:grid-cols-3 gap-10 ">
       {navCards.map((card) => (
@@ -11,13 +12,16 @@ const NavCard = () => {
           <img src={card.icon} alt="Card image" className="w-20 h-auto" />
           <h5 className="text-2xl font-bold">{card.title}</h5>
           <p className="text-lg">{card.description}</p>
-          <button className="border rounded-md mt-3 py-3 font-semibold border-[#64B500] text-[#64B500]">
+          <Link
+            href={card.href}
+            className="border flex justify-center items-center rounded-md mt-3 py-3 font-semibold border-[#64B500] text-[#64B500]"
+          >
             {card.buttonText}
-          </button>
+          </Link>
         </article>
       ))}
     </div>
   );
 };
 
-export default NavCard;
+export default NavCards;

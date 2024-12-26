@@ -4,6 +4,7 @@ import { Disclosure,  } from "@headlessui/react";
 
 import { MagnifyingGlassIcon } from "@heroicons/react/20/solid";
 import { Bars3CenterLeftIcon, XMarkIcon } from "@heroicons/react/24/outline";
+import Link from "next/link";
 import { Fragment } from "react";
 
 
@@ -18,14 +19,14 @@ const Navbar = () => {
                 <div className="relative flex h-16 items-center justify-between">
                   {/* Logo section */}
                   <div className="flex items-center px-2 lg:px-0 xl:w-64">
-                    <div className="flex-shrink-0">
+                    <Link href="/" className="flex-shrink-0">
                       <img
                        
                         className="h-8 sm:h-10 w-auto"
                         src="/landing/logo.png"
                         alt="Your Company"
                       />
-                    </div>
+                    </Link>
                   </div>
 
                   {/* Search section */}
@@ -87,10 +88,10 @@ const Navbar = () => {
                       </div>
                       {/* Profile dropdown */}
                       <div className="flex gap-3">
-                        <button className="py-2.5 px-4 bg-transparent text-[#64B500] border border-[#64B500] rounded-md">
+                        <Link href={`/auth/login`} className="py-2.5 px-4 bg-transparent text-[#64B500] border border-[#64B500] rounded-md">
                           Login
-                        </button>
-                        <button className="py-2.5 px-4 bg-[#64B500] rounded-md text-white">Sign Up</button>
+                        </Link>
+                        <Link href={`/auth/register`} className="py-2.5 px-4 bg-[#64B500] rounded-md text-white">Sign Up</Link>
                       </div>
                     </div>
                   </div>
