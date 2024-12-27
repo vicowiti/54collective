@@ -43,6 +43,7 @@ export async function POST(req: NextRequest) {
     // Exclude the password from the user object before returning it
     const { password: _, ...userWithoutPassword } = newUser.toObject();
 
+    console.log("newUser", _);
     // Generate JWT token
     const token = jwt.sign(
       { userId: newUser._id, email: newUser.email },

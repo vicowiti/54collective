@@ -20,7 +20,7 @@ const validateUser = async (email: string, password: string) => {
   if (isPasswordValid) {
     // Return the user data (excluding password)
     const { password: _, ...userWithoutPassword } = user.toObject();
-
+console.log("newUser", _);
     return userWithoutPassword;
   }
 
