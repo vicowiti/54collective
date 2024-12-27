@@ -23,8 +23,7 @@ const dbConnect = async () => {
     const db = await mongoose.connect(MONGO_URI, {
   
  
-  connectTimeoutMS: 10000, // 10 seconds
-  socketTimeoutMS: 10000,  // 10 seconds
+  
 });
 
     // Update the connection status
