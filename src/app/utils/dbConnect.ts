@@ -21,8 +21,7 @@ const dbConnect = async () => {
     // If not connected, attempt to connect
     console.log("Connecting to MongoDB...");
     const db = await mongoose.connect(MONGO_URI, {
-  
- 
+
   
 });
 
