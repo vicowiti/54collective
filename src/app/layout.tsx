@@ -3,6 +3,7 @@ import { Poppins } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import { Toaster } from "sonner";
 
 
 
@@ -41,6 +42,7 @@ export default function RootLayout({
       <body
         className={` ${poppins.variable} antialiased `}
       >
+        <Toaster richColors position="top-center" duration={3}/>
         <Navbar />
         <div className="mainbody w-full  mx-auto">{children}</div>
         <Footer />

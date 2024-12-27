@@ -1,6 +1,54 @@
+"use client";
+import axios from "axios";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
+import { FaEye, FaEyeSlash } from "react-icons/fa6";
+import { PiSpinner } from "react-icons/pi";
+import { toast } from "sonner";
 
 const Register = () => {
+  const [loading, setLoading] = useState(false);
+  const [showPassword, setShowPassword] = useState(false); // Track whether to show the password
+  const router = useRouter();
+  const togglePasswordVisibility = () => {
+    setShowPassword((prevState) => !prevState);
+  };
+  const handleRegister = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const form = e.currentTarget;
+    const name = form.username.value;
+    const email = form.email.value;
+    const phoneNumber = form.number.value;
+    const password = form.password.value;
+    const gender = form.gender.gender;
+
+    try {
+      setLoading(true);
+
+      const response = await axios.post("/api/auth/createUser", {
+        email,
+        password,
+        name,
+        phoneNumber,
+        isAdmin: true,
+        gender,
+      });
+
+      if (response.data.user) {
+        toast.success("User created!");
+        router.push("/");
+      } else {
+        toast.error("Could not create User.");
+      }
+
+      setLoading(false);
+    } catch (error) {
+      setLoading(false);
+      console.log(error);
+    }
+  };
+
   return (
     <div className="sm:p-20 p-8">
       <div className="mb-10">
@@ -16,9 +64,7 @@ const Register = () => {
         </button>
       </div>
 
-      <form action="" className="mt-10">
-       
-
+      <form onSubmit={(e) => handleRegister(e)} className="mt-10">
         <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
           <div className="mt-4">
             <label
@@ -29,8 +75,9 @@ const Register = () => {
             </label>
             <input
               type="text"
-              name="name"
+              name="username"
               placeholder="Enter Name"
+              required
               id="name"
               className="mt-1 p-3 block w-full rounded-md outline-none border-gray-300 shadow-sm bg-[#f6f9f8]  sm:text-sm"
             />
@@ -45,6 +92,7 @@ const Register = () => {
             <input
               type="email"
               name="email"
+              required
               placeholder="Enter Email"
               id="email"
               className="mt-1 p-3 block w-full rounded-md outline-none border-gray-300 shadow-sm bg-[#f6f9f8]  sm:text-sm"
@@ -60,6 +108,7 @@ const Register = () => {
             <input
               type="text"
               placeholder="Enter Phone"
+              required
               name="number"
               id="number"
               className="mt-1 p-3 block w-full rounded-md outline-none border-gray-300 shadow-sm bg-[#f6f9f8]  sm:text-sm"
@@ -75,6 +124,7 @@ const Register = () => {
             <input
               type="text"
               name="gender"
+              required
               placeholder="Select Gender"
               id="gender"
               className="mt-1 p-3 block w-full rounded-md outline-none border-gray-300 shadow-sm bg-[#f6f9f8]  sm:text-sm"
@@ -89,20 +139,36 @@ const Register = () => {
           >
             Password
           </label>
-          <input
-            type="password"
-            name="password"
-            placeholder="*********"
-            id="password"
-            className="mt-1 p-3 block w-full rounded-md outline-none border-gray-300 shadow-sm bg-[#f6f9f8]  sm:text-sm"
-          />
+          <div className="relative">
+            <input
+              type={showPassword ? "text" : "password"} // Toggle the type of input
+              name="password"
+              required
+              placeholder="*********"
+              id="password"
+              className="mt-1 p-3 block w-full rounded-md outline-none border-gray-300 shadow-sm bg-[#f6f9f8] sm:text-sm"
+            />
+            <button
+              type="button"
+              onClick={togglePasswordVisibility}
+              className="absolute right-3 top-1/2 transform -translate-y-1/2"
+            >
+              {showPassword ? (
+                <FaEyeSlash className="text-gray-500" />
+              ) : (
+                <FaEye className="text-gray-500" />
+              )}
+            </button>
+          </div>
         </div>
 
         <div className="mt-4">
           <button
+            disabled={loading}
             type="submit"
-            className="w-full bg-[#64B500] text-white py-2 rounded-md "
+            className="w-full flex hover:scale-105 duration-300 justify-center items-center gap-3 disabled:bg-green-400 bg-[#64B500] text-white py-2 rounded-md "
           >
+            {loading && <PiSpinner size={18} className="animate-spin" />}
             Sign Up
           </button>
         </div>
