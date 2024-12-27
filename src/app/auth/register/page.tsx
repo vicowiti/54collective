@@ -1,4 +1,5 @@
 "use client";
+import { useUserData } from "@/app/hooks/useUserData";
 import axios from "axios";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -8,6 +9,7 @@ import { PiSpinner } from "react-icons/pi";
 import { toast } from "sonner";
 
 const Register = () => {
+  const{setUserData} = useUserData()
   const [loading, setLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false); // Track whether to show the password
   const router = useRouter();
@@ -21,7 +23,7 @@ const Register = () => {
     const email = form.email.value;
     const phoneNumber = form.number.value;
     const password = form.password.value;
-    const gender = form.gender.gender;
+    const gender = form.gender.value;
 
     try {
       setLoading(true);
@@ -31,13 +33,15 @@ const Register = () => {
         password,
         name,
         phoneNumber,
-        isAdmin: true,
+        isAdmin: false,
         gender,
       });
 
       if (response.data.user) {
+        localStorage.setItem("user", JSON.stringify(response.data.user));
         toast.success("User created!");
         router.push("/");
+        setUserData(response.data.user)
       } else {
         toast.error("Could not create User.");
       }

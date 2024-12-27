@@ -20,7 +20,7 @@ const validateUser = async (email: string, password: string) => {
   if (isPasswordValid) {
     // Return the user data (excluding password)
     const { password: _, ...userWithoutPassword } = user.toObject();
-console.log("newUser", _);
+    console.log("newUser", _);
     return userWithoutPassword;
   }
 
@@ -65,7 +65,6 @@ export async function POST(req: NextRequest) {
     });
 
     // Respond with the user data (without password)
-    response.json();
 
     return response;
   } catch (error) {

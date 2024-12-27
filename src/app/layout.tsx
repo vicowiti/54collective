@@ -1,3 +1,4 @@
+
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import "./globals.css";
@@ -46,6 +47,7 @@ export default function RootLayout({
         <Navbar />
         <div className="mainbody w-full  mx-auto">{children}</div>
         <Footer />
+        <Toaster richColors/>
       </body>
     </html>
   );

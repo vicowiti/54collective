@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-const MONGO_URI = `mongodb+srv://viowiti12:Y7Hvj4Eu6a4UXv50@cluster0.zcoin.mongodb.net/prototype?retryWrites=true&w=majority&appName=Cluster0` 
+const MONGO_URI = process.env.MONGO_URI || ""
 
 // let isConnected = false; // Track whether the app is connected to the database
 

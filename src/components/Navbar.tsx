@@ -1,14 +1,28 @@
 "use client";
 
-import { Disclosure,  } from "@headlessui/react";
+import { useUserData } from "@/app/hooks/useUserData";
+import { Disclosure, Menu, Transition } from "@headlessui/react";
 
 import { MagnifyingGlassIcon } from "@heroicons/react/20/solid";
 import { Bars3CenterLeftIcon, XMarkIcon } from "@heroicons/react/24/outline";
+import axios from "axios";
 import Link from "next/link";
 import { Fragment } from "react";
 
+function classNames(...classes: string[]) {
+  return classes.filter(Boolean).join(" ");
+}
 
 const Navbar = () => {
+  const { user, clearUserData } = useUserData();
+
+  async function handleLogout() {
+    clearUserData();
+    await axios.post("/api/auth/logout");
+  }
+
+  console.log("user in navbar", user);
+  
   return (
     <nav className="p-3 bg-[#2a2a27] ">
       <div className="max-w-[1340px] mx-auto">
@@ -21,7 +35,6 @@ const Navbar = () => {
                   <div className="flex items-center px-2 lg:px-0 xl:w-64">
                     <Link href="/" className="flex-shrink-0">
                       <img
-                       
                         className="h-8 sm:h-10 w-auto"
                         src="/landing/logo.png"
                         alt="Your Company"
@@ -75,24 +88,99 @@ const Navbar = () => {
                       <div className="flex">
                         <Link
                           href="/funding"
-                          className="rounded-md px-3 py-2 text-sm font-medium text-indigo-200 hover:text-white"
+                          className="rounded-md px-3 py-2 text-sm font-medium text-white hover:text-[#e5cf00] duration-200 hover:scale-110"
                         >
                           Solutions
                         </Link>
                         <a
                           href="/support"
-                          className="rounded-md px-3 py-2 text-sm font-medium text-indigo-200 hover:text-white"
+                          className="rounded-md px-3 py-2 text-sm font-medium text-white hover:text-[#e5cf00] duration-200 hover:scale-110"
                         >
                           Resources
                         </a>
                       </div>
                       {/* Profile dropdown */}
-                      <div className="flex gap-3">
-                        <Link href={`/auth/login`} className="py-2.5 px-4 bg-transparent text-[#64B500] border border-[#64B500] rounded-md">
-                          Login
-                        </Link>
-                        <Link href={`/auth/register`} className="py-2.5 px-4 bg-[#64B500] rounded-md text-white">Sign Up</Link>
-                      </div>
+                      {!user ? (
+                        <div className="flex gap-3">
+                          <Link
+                            href={`/auth/login`}
+                            className="py-2.5 px-4 bg-transparent text-[#64B500] border border-[#64B500] rounded-md"
+                          >
+                            Login
+                          </Link>
+                          <Link
+                            href={`/auth/register`}
+                            className="py-2.5 px-4 bg-[#64B500] rounded-md text-white"
+                          >
+                            Sign Up
+                          </Link>
+                        </div>
+                      ) : (
+                        <Menu as="div" className="relative ml-4 flex-shrink-0">
+                          <div>
+                            <Menu.Button className="flex rounded-full bg-[#64b500] text-sm text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-[#64b500]">
+                              <span className="sr-only">Open user menu</span>
+                              <img
+                                className="h-8 w-8 rounded-full"
+                                src="/avatar.jpg"
+                                alt=""
+                              />
+                            </Menu.Button>
+                          </div>
+                          <Transition
+                            as={Fragment}
+                            enter="transition ease-out duration-100"
+                            enterFrom="transform opacity-0 scale-95"
+                            enterTo="transform opacity-100 scale-100"
+                            leave="transition ease-in duration-75"
+                            leaveFrom="transform opacity-100 scale-100"
+                            leaveTo="transform opacity-0 scale-95"
+                          >
+                            <Menu.Items className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+                              <Menu.Item>
+                                {({ active }) => (
+                                  <a
+                                    href="#"
+                                    className={classNames(
+                                      active ? "bg-gray-100" : "",
+                                      "block px-4 py-2 text-sm text-gray-700"
+                                    )}
+                                  >
+                                    {user?.name}
+                                  </a>
+                                )}
+                              </Menu.Item>
+                              <Menu.Item>
+                                {({ active }) => (
+                                  <Link
+                                    href="/profile"
+                                    className={classNames(
+                                      active ? "bg-gray-100" : "",
+                                      "block px-4 py-2 text-sm text-gray-700"
+                                    )}
+                                  >
+                                    View Profile
+                                  </Link>
+                                )}
+                              </Menu.Item>
+                              <Menu.Item>
+                                {({ active }) => (
+                                  <a
+                                    href="#"
+                                    onClick={handleLogout}
+                                    className={classNames(
+                                      active ? "bg-gray-100" : "",
+                                      "block px-4 py-2 text-sm text-gray-700"
+                                    )}
+                                  >
+                                    Logout
+                                  </a>
+                                )}
+                              </Menu.Item>
+                            </Menu.Items>
+                          </Transition>
+                        </Menu>
+                      )}
                     </div>
                   </div>
                 </div>
@@ -107,7 +195,6 @@ const Navbar = () => {
                   >
                     Home
                   </Disclosure.Button>
-                 
                 </div>
                 <div className="border-t border-[#f4f4f4] pt-4 pb-3">
                   <div className="px-2">
@@ -118,7 +205,7 @@ const Navbar = () => {
                     >
                       Your Profile
                     </Disclosure.Button>
-                   
+
                     <Disclosure.Button
                       as="a"
                       href="#"
