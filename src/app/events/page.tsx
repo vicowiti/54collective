@@ -5,7 +5,7 @@ import { useEffect } from "react";
 import EventListing from "@/components/EventListing";
 
 const Events = () => {
-  const { user } = useUserData();
+  const { user } = useUserData(); 
 
   useEffect(() => {
 
