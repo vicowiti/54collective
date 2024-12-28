@@ -1,9 +1,10 @@
-"use client"
+"use client";
 import axios from "axios";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { FaArrowRightLong, FaLocationDot } from "react-icons/fa6";
 import { MdOutlineCalendarMonth } from "react-icons/md";
+import { PiSpinner } from "react-icons/pi";
 
 interface EventItem {
   _id: string;
@@ -18,20 +19,32 @@ interface EventItem {
 const EventListing = () => {
   const [data, setData] = useState<EventItem[]>([]);
   const [error, setError] = useState<string | null>(null);
+  const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
     async function fetchData() {
       try {
+        setLoading(true);
         const response = await axios.get("/api/events/getEvents");
         setData(response.data);
+        setLoading(false);
       } catch (error) {
         console.error("Error fetching events:", error);
         setError("Error loading events. Please try again later.");
+        setLoading(false);
       }
     }
 
     fetchData();
   }, []);
+
+  if (loading) {
+    return (
+      <p className="text-xl text-center flex gap-5 justify-center items-center">
+        <PiSpinner className="animate-spin" /> Loading Events...
+      </p>
+    );
+  }
 
   if (error) {
     return <p>{error}</p>;
