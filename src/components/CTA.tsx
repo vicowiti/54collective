@@ -9,7 +9,7 @@ const CTA = () => {
       <div className="h-1/2 bg-[#f6f6e8]"></div>
 
       {/* Bottom White Background */}
-      <div className="h-1/2 bg-[#2a2a27]"></div>
+      <div className="h-1/2 bg-[#f6f6e8]"></div>
 
       {/* Center Section with Floating Image and Text */}
       <div className="absolute inset-0 flex items-center justify-center px-4">

@@ -21,7 +21,7 @@ export default function RootLayout({
           <h3 className="font-bold text-3xl sm:text-5xl">
             Find the Right Support to Accelerate Your Business.
           </h3>
-          <p className="text-lg sm:text-xl mt-3">
+          <p className="text-lg sm:text-xl mt-3 hidden sm:block">
             Connect with Entrepreneur Support Organizations (ESOs) offering
             mentorship, training, and resources tailored to your needs.
           </p>

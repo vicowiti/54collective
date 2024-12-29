@@ -118,13 +118,14 @@ const Navbar = () => {
                       ) : (
                         <Menu as="div" className="relative ml-4 flex-shrink-0">
                           <div>
-                            <Menu.Button className="flex rounded-full bg-[#64b500] text-sm text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-[#64b500]">
+                            <Menu.Button className="flex items-center gap-2 font-semibold rounded-full bg-transparent text-sm text-[#64b500] focus:outline-none ">
                               <span className="sr-only">Open user menu</span>
                               <img
                                 className="h-8 w-8 rounded-full"
                                 src="/avatar.jpg"
                                 alt=""
                               />
+                              <h6>{user.name}</h6>
                             </Menu.Button>
                           </div>
                           <Transition

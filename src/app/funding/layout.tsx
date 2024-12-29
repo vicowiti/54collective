@@ -21,7 +21,7 @@ export default function RootLayout({
           <h3 className="font-bold text-3xl sm:text-5xl">
             Secure the Funding You Need to Build Your Dream
           </h3>
-          <p className="text-lg sm:text-xl mt-3">
+          <p className="text-lg sm:text-xl mt-3 hidden sm:block">
             Access a curated directory of grants, loans and investment
             opportunities designed for entrepreneurs at every stage.
           </p>

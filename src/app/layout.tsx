@@ -40,14 +40,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={` ${poppins.variable}  antialiased `}
-      >
-        <Toaster richColors position="top-center" duration={3}/>
-        <Navbar />
-        <div className="mainbody w-full  mx-auto">{children}</div>
-        <Footer />
-        <Toaster richColors/>
+      <body className={` ${poppins.variable} antialiased `}>
+        <Toaster richColors position="top-center" duration={3} />
+        <div className="flex flex-col min-h-screen">
+          <Navbar />
+          <main className="flex-grow mainbody w-full mx-auto">{children}</main>
+          <Footer />
+        </div>
       </body>
     </html>
   );
