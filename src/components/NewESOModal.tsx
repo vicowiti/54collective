@@ -118,7 +118,8 @@ export default function NewESOModal() {
                           <option value="">Support Type</option>
                           <option value="Training">Training</option>
                           <option value="MentorShip">MentorShip</option>
-                          <option value="Funding">Training</option>
+                          <option value="Training">Training</option>
+                          <option value="Financial">Financial</option>
                         </select>
                       </div>
                       <div className="flex flex-col gap-1 my-2">
@@ -142,7 +143,7 @@ export default function NewESOModal() {
                         {loading && (
                           <PiSpinner size={16} className="animate-spin " />
                         )}
-                        Submit Event
+                        Submit ESO
                       </button>
                     </div>
                   </form>
