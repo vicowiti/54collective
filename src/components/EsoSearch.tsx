@@ -1,3 +1,5 @@
+"use client";
+
 import { FaSearch } from "react-icons/fa";
 import { FaFilter } from "react-icons/fa6";
 
@@ -10,9 +12,23 @@ interface Props {
   setIndustry: React.Dispatch<React.SetStateAction<string>>;
   supportType: string;
   setSupportType: React.Dispatch<React.SetStateAction<string>>;
+  setSearch: React.Dispatch<React.SetStateAction<boolean>>;
+  search: boolean;
 }
 
 const EsoSearch = (props: Props) => {
+  const handleSearch = () => {
+    props.setSearch(!props.search);
+  };
+
+  const handleReset = () => {
+    props.setSearchTerm("");
+    props.setRegion("");
+    props.setIndustry("");
+    props.setSupportType("");
+    props.setSearch(!props.search);
+  };
+
   return (
     <div>
       <div className="flex items-center justify-end gap-4">
@@ -114,6 +130,20 @@ const EsoSearch = (props: Props) => {
             />
             <FaSearch className="absolute top-1/2 left-3 transform -translate-y-1/2 text-gray-400" />
           </div>
+        </div>
+        <div className="sm:flex-1 flex items-center gap-3">
+          <button
+            onClick={handleSearch}
+            className="bg-[#80C22F] text-white px-4 py-2 w-full rounded-lg text-sm"
+          >
+            Search
+          </button>
+          <button
+            onClick={handleReset}
+            className="bg-[#80C22F] text-white px-4 py-2 w-full rounded-lg text-sm"
+          >
+            Reset
+          </button>
         </div>
       </div>
     </div>

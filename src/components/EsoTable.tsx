@@ -3,25 +3,42 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { PiSpinner } from "react-icons/pi";
 import EsoSearch from "./EsoSearch";
+import EsoModal from "./ESOModal";
 
-interface EventItem {
+export interface EntrepreneurialSupportOrganization {
   _id: string;
-  esoType: string;
-  supportType: string;
-  Website: string;
-  companyName: string;
-  website?: string;
-  time?: string;
+  esoName: string;
+  typeOfSupportProvided: string;
+  websiteUrl: string;
+  contactInformation: string;
+  targetEntrepreneurs: string;
+  industryFocus: string;
+  eligibilityCriteria: string;
+  programsOffered: string;
+  programDuration: string;
+  modeOfDelivery: string;
+  coreServices: string;
+  location: string;
+  regionalFocus: string;
+  networkingOpportunities: string;
+  alumniNetwork: string;
+  impactMetrics: string;
+  specialFocusAreas: string;
+  partnerships: string;
+  fees: string;
+  applicationProcess: string;
+  languagesSupported: string;
 }
 
 const EsoTable = () => {
-  const [data, setData] = useState<EventItem[]>([]);
+  const [data, setData] = useState<EntrepreneurialSupportOrganization[]>([]);
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
   const [region, setRegion] = useState("");
   const [industry, setIndustry] = useState("");
   const [supportType, setSupportType] = useState("");
+  const [search, setSearch] = useState(false);
 
   useEffect(() => {
     async function fetchData() {
@@ -40,7 +57,7 @@ const EsoTable = () => {
     }
 
     fetchData();
-  }, [industry, region, searchTerm, supportType]);
+  }, [search]);
 
   if (loading) {
     return (
@@ -66,6 +83,8 @@ const EsoTable = () => {
           setRegion={setRegion}
           setSearchTerm={setSearchTerm}
           setSupportType={setSupportType}
+          setSearch={setSearch}
+          search={search}
         />
       </div>
 
@@ -84,20 +103,16 @@ const EsoTable = () => {
         <tbody>
           {data?.map((program, index) => (
             <tr key={index} className="border-b border-[#D5D5D5]">
-              <td className="p-3">{program.companyName}</td>
-              <td className="p-3 hidden sm:table-cell">{program.esoType}</td>
+              <td className="p-3">{program.esoName}</td>
               <td className="p-3 hidden sm:table-cell">
-                {program.supportType}
+                {program.targetEntrepreneurs}
+              </td>
+              <td className="p-3 hidden sm:table-cell">
+                {program.typeOfSupportProvided}
               </td>
 
               <td className="p-3">
-                <a
-                  className="text-[#80C22F] whitespace-nowrap border border-[#80C22F] p-2 text-xs sm:p-2 rounded-md"
-                  href={program.website}
-                  target="_blank"
-                >
-                  View
-                </a>
+                <EsoModal program={program} />
               </td>
             </tr>
           ))}

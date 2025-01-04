@@ -1,25 +1,31 @@
 "use client";
+
 import { Fragment, useState } from "react";
 import { Dialog, Transition } from "@headlessui/react";
-import { FundingProgram } from "@/data/fundingData";
 import { FaLocationDot } from "react-icons/fa6";
+import { EntrepreneurialSupportOrganization } from "./EsoTable";
 
 interface Props {
-  program: FundingProgram;
+  program: EntrepreneurialSupportOrganization;
 }
-export default function EsoModal(props: Props) {
+
+export default function EsoModal({ program }: Props) {
   const [open, setOpen] = useState(false);
 
   return (
     <>
+      {/* Trigger Button */}
       <button
         onClick={() => setOpen(true)}
-        className="text-[#80C22F] whitespace-nowrap border border-[#80C22F] p-2 text-xs sm:p-3 rounded-md"
+        className="text-[#80C22F] whitespace-nowrap border border-[#80C22F] px-3 py-2 text-xs sm:px-4 sm:py-3 rounded-md"
       >
         View Details
       </button>
+
+      {/* Modal */}
       <Transition.Root show={open} as={Fragment}>
         <Dialog as="div" className="relative z-10" onClose={setOpen}>
+          {/* Background Overlay */}
           <Transition.Child
             as={Fragment}
             enter="ease-out duration-300"
@@ -33,7 +39,7 @@ export default function EsoModal(props: Props) {
           </Transition.Child>
 
           <div className="fixed inset-0 z-10 overflow-y-auto">
-            <div className="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
+            <div className="flex min-h-full items-center justify-center p-4 sm:p-6">
               <Transition.Child
                 as={Fragment}
                 enter="ease-out duration-300"
@@ -43,130 +49,108 @@ export default function EsoModal(props: Props) {
                 leaveFrom="opacity-100 translate-y-0 sm:scale-100"
                 leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
               >
-                <Dialog.Panel className="relative transform overflow-hidden rounded-lg bg-white px-4 pt-5 pb-4 text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-7xl sm:p-6">
-                  <div>
-                    <header className="flex flex-col sm:flex-row justify-between items-center">
-                      <div>
-                        <h2 className="font-bold text-xl my-2">
-                          {props.program.name}
-                        </h2>
-                        <p className="flex items-center gap-3 text-[#4F4F4F]">
-                          <FaLocationDot /> {props.program.locations.join(", ")}
-                        </p>
-                        <button className="bg-[#FDF9D6] px-2 py-1 text-[#E5CF00] text-xs my-2 rounded-md">
-                          {props.program.status}
-                        </button>
-                      </div>
-                      <div>
-                        <button className="bg-[#64B500] text-white px-3 text-xs py-2 rounded-md">
-                          Apply
-                        </button>
-                      </div>
-                    </header>
+                <Dialog.Panel className="relative w-full max-w-4xl transform rounded-lg bg-white p-6 text-left shadow-xl transition-all">
+                  {/* Header */}
+                  <header className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6">
+                    <div>
+                      <h2 className="text-xl font-bold mb-2">
+                        {program.esoName}
+                      </h2>
+                      <p className="flex items-center text-sm text-[#4F4F4F]">
+                        <FaLocationDot className="mr-2" />
+                        {program.location}
+                      </p>
+                    </div>
+                    <a
+                      href={program.websiteUrl}
+                      className="mt-4 sm:mt-0 bg-[#64B500] text-white text-xs px-4 py-2 rounded-md"
+                    >
+                      Apply
+                    </a>
+                  </header>
 
-                    <section className="flex flex-col sm:flex-row gap-4 my-4">
-                      <div className="sm:flex-1 flex flex-col gap-3">
-                        <p className="flex gap-3 text-sm text-[#8C8C8C]">
-                          Target Entrepreneurs{" "}
-                          <span className="font-bold text-black">
-                            {props.program.entrepreneurialStage}
-                          </span>
-                        </p>
-                        <p className="flex gap-3 text-sm text-[#8C8C8C]">
-                          Industry Focus{" "}
-                          <span className="font-bold text-black">
-                            {props.program.industryFocus}
-                          </span>
-                        </p>
-                        <p className="flex gap-3 text-sm text-[#8C8C8C]">
-                          Fees{" "}
-                          <span className="font-bold text-black">
-                            {props.program.fees}
-                          </span>
-                        </p>
-                        <p className="flex gap-3 text-sm text-[#8C8C8C]">
-                          Website Link{" "}
-                          <span className="font-bold text-black">
-                            {props.program.websiteLink}
-                          </span>
-                        </p>
-                        <p className="flex gap-3 text-sm text-[#8C8C8C]">
-                          Programs Offered{" "}
-                          <span className="font-bold text-black">
-                            {props.program.programDetails}
-                          </span>
-                        </p>
-                        <p className="flex gap-3 text-sm text-[#8C8C8C]">
-                          Mode of Delivery{" "}
-                          <span className="font-bold text-black">
-                            {props.program.deliveryMode}
-                          </span>
-                        </p>
-                        <p className="flex gap-3 text-sm text-[#8C8C8C]">
-                          Program Duration{" "}
-                          <span className="font-bold text-black">
-                            {props.program.durationOfSupport}
-                          </span>
-                        </p>
-                        <p className="flex gap-3 text-sm text-[#8C8C8C]">
-                          Care Services{" "}
-                          <span className="font-bold text-black">
-                            {props.program.nonMonetarySupport.join(", ")}
-                          </span>
-                        </p>
-                      </div>
+                  {/* Content */}
+                  <section className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                    {/* Column 1 */}
+                    <div className="flex flex-col gap-4">
+                      <InfoRow
+                        label="Target Entrepreneurs"
+                        value={program.targetEntrepreneurs}
+                      />
+                      <InfoRow
+                        label="Industry Focus"
+                        value={program.industryFocus}
+                      />
+                      <InfoRow label="Fees" value={program.fees} />
+                      <InfoRow
+                        label="Website Link"
+                        value={
+                          <a
+                            href={program.websiteUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-blue-600 underline"
+                          >
+                            {program.websiteUrl}
+                          </a>
+                        }
+                      />
+                      <InfoRow
+                        label="Programs Offered"
+                        value={program.programsOffered}
+                      />
+                      <InfoRow
+                        label="Mode of Delivery"
+                        value={program.modeOfDelivery}
+                      />
+                      <InfoRow
+                        label="Program Duration"
+                        value={program.programDuration}
+                      />
+                      <InfoRow
+                        label="Core Services"
+                        value={program.coreServices}
+                      />
+                    </div>
 
-                      <div className="sm:flex-1 flex flex-col gap-3">
-                        <p className="flex gap-3 text-sm text-[#8C8C8C]">
-                          Networking Opportunities{" "}
-                          <span className="font-bold text-black">
-                            {props.program.networkingOpportunities}
-                          </span>
-                        </p>
-                        <p className="flex gap-3 text-sm text-[#8C8C8C]">
-                          Application Process{" "}
-                          <span className="font-bold text-black">
-                            {props.program.applicationProcess}
-                          </span>
-                        </p>
-                         <p className="flex gap-3 text-sm text-[#8C8C8C]">
-                          Languages Supported{" "}
-                          <span className="font-bold text-black">
-                            {props.program.languagesSupported.join(", ")}
-                          </span>
-                        </p>
-                        <p className="flex gap-3 text-sm text-[#8C8C8C]">
-                          Impact Metrics{" "}
-                          <span className="font-bold text-black">
-                            {props.program.impactMetrics}
-                          </span>
-                        </p>
-                      </div>
-                    </section>
-                    <section>
-                      <h3 className="font-semibold mt-5 text-lg">Requirements</h3>
-                      <ul className="pl-4 list-disc">
-                        {props.program.requirements.businessPlan && (
-                          <li>Should have a Business Plan.</li>
-                        )}
-                        {props.program.requirements.pitchDeck && (
-                          <li>Well prepared Pitch Deck.</li>
-                        )}
-                        <li>
-                          Should be{" "}
-                          {props.program.requirements.entrepreneurialStage}.
-                        </li>
-                        <li>
-                          Business should be registered in{" "}
-                          {props.program.requirements.geographicEligibility}.
-                        </li>
-                        <li>
-                          Business should be making{" "}
-                          {props.program.requirements.revenueCap} in revenue.
-                        </li>
-                      </ul>
-                    </section>
-                  </div>
+                    {/* Column 2 */}
+                    <div className="flex flex-col gap-4">
+                      <InfoRow
+                        label="Networking Opportunities"
+                        value={program.networkingOpportunities}
+                      />
+                      <InfoRow
+                        label="Application Process"
+                        value={program.applicationProcess}
+                      />
+                      <InfoRow
+                        label="Languages Supported"
+                        value={program.languagesSupported}
+                      />
+                      <InfoRow
+                        label="Impact Metrics"
+                        value={program.impactMetrics}
+                      />
+                    </div>
+                  </section>
+
+                  {/* Special Focus Areas */}
+                  <section className="mt-6">
+                    <h3 className="text-lg font-semibold mb-2">
+                      Special Focus Areas
+                    </h3>
+                    <p className="text-sm text-[#4F4F4F]">
+                      {program.specialFocusAreas}
+                    </p>
+                  </section>
+
+                  {/* Partnerships */}
+                  <section className="mt-6">
+                    <h3 className="text-lg font-semibold mb-2">Partnerships</h3>
+                    <p className="text-sm text-[#4F4F4F]">
+                      {program.partnerships}
+                    </p>
+                  </section>
                 </Dialog.Panel>
               </Transition.Child>
             </div>
@@ -174,5 +158,14 @@ export default function EsoModal(props: Props) {
         </Dialog>
       </Transition.Root>
     </>
+  );
+}
+
+// Reusable Component for Info Rows
+function InfoRow({ label, value }: { label: string; value: React.ReactNode }) {
+  return (
+    <p className="text-sm text-[#8C8C8C]">
+      {label}: <span className="font-bold text-black">{value}</span>
+    </p>
   );
 }

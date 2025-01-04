@@ -4,22 +4,36 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { PiSpinner } from "react-icons/pi";
 import FundingSearch from "./FundingSearch";
+import FundingModal from "./FundingModal";
 
-interface EventItem {
+export interface FundingOrganization {
   _id: string;
+
   companyName: string;
-  industry: string;
-  region: string;
-  businessStage: string;
   fundingType: string;
-  esoType: string;
-  supportType: string;
-  amount: number;
   website: string;
+  contactInfo: string;
+  businessStage: string;
+  industryFocus: string;
+  fundingAmountRange: string;
+  nonMonetarySupport: string;
+  applicationDeadline: string;
+  applicationFrequency: string;
+  eligibilityCriteria: string;
+  requiredDocuments: string;
+  evaluationCriteria: string;
+  countryRegionFocus: string;
+  pastRecipients: string;
+  durationOfSupport: string;
+  restrictionsExclusions: string;
+  programDetails: string; // Fixed typo in key from "PprogramDetails" to "programDetails"
+  faqsGuidelines: string;
+  currencyOfFunding: string;
+  taxImplications: string;
 }
 
 const FundingTable = () => {
-  const [data, setData] = useState<EventItem[]>([]);
+  const [data, setData] = useState<FundingOrganization[]>([]);
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
@@ -27,6 +41,7 @@ const FundingTable = () => {
   const [region, setRegion] = useState("");
   const [industry, setIndustry] = useState("");
   const [fundingType, setfundingType] = useState("");
+  const [search, setSearch] = useState(false);
 
   useEffect(() => {
     async function fetchData() {
@@ -45,7 +60,7 @@ const FundingTable = () => {
     }
 
     fetchData();
-  }, [amount, fundingType, industry, region, searchTerm]);
+  }, [search]);
 
   if (loading) {
     return (
@@ -73,6 +88,8 @@ const FundingTable = () => {
           setfundingType={setfundingType}
           searchTerm={searchTerm}
           setSearchTerm={setSearchTerm}
+          search={search}
+          setSearch={setSearch}
         />
       </div>
 
@@ -94,21 +111,21 @@ const FundingTable = () => {
           {data?.map((program, index) => (
             <tr key={index} className="border-b border-[#D5D5D5]">
               <td className="p-3">{program.companyName}</td>
-              <td className="p-3 hidden sm:table-cell">{program.industry}</td>
-              <td className="p-3 hidden sm:table-cell">{program.region}</td>
+              <td className="p-3 hidden sm:table-cell">
+                {program.industryFocus}
+              </td>
+              <td className="p-3 hidden sm:table-cell">
+                {program.countryRegionFocus}
+              </td>
               <td className="p-3 hidden sm:table-cell">
                 {program.businessStage}
               </td>
               <td className="p-3">{program.fundingType}</td>
-              <td className="p-3 hidden sm:table-cell">{program.amount} $</td>
+              <td className="p-3 hidden sm:table-cell">
+                {program.fundingAmountRange} $
+              </td>
               <td className="p-3">
-                <a
-                  className="text-[#80C22F] whitespace-nowrap border border-[#80C22F] p-2 text-xs sm:p-2 rounded-md"
-                  href={program.website}
-                  target="_blank"
-                >
-                  View
-                </a>
+                <FundingModal program={program} />
               </td>
             </tr>
           ))}

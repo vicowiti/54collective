@@ -22,6 +22,7 @@ export interface IEso extends Document {
   fees: string;
   applicationProcess: string;
   languagesSupported: string;
+  coreServices: string;
 }
 
 // Create the schema for the ESO model
@@ -104,6 +105,10 @@ const EsoSchema: Schema<IEso> = new Schema(
       required: true,
     },
     languagesSupported: {
+      type: String,
+      required: true,
+    },
+    coreServices: {
       type: String,
       required: true,
     },

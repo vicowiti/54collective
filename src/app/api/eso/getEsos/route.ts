@@ -20,23 +20,23 @@ export async function GET(req: NextRequest) {
 
     // Build a dynamic query object
     const query: {
-      companyName?: { $regex: string; $options: string };
-      region?: string;
-      supportType?: string;
-      industry?: string;
+      esoName?: { $regex: string; $options: string };
+      regionalFocus?: string;
+      typeOfSupportProvided?: string;
+      industryFocus?: string;
     } = {};
 
     if (searchTerm) {
-      query.companyName = { $regex: searchTerm, $options: "i" }; // Case-insensitive substring match
+      query.esoName = { $regex: searchTerm, $options: "i" }; // Case-insensitive substring match
     }
     if (region) {
-      query.region = region;
+      query.regionalFocus = region;
     }
     if (supportType) {
-      query.supportType = supportType;
+      query.typeOfSupportProvided = supportType;
     }
     if (industry) {
-      query.industry = industry;
+      query.industryFocus = industry;
     }
 
     // Fetch filtered Esos or all if no filters are applied

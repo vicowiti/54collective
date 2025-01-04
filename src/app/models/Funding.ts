@@ -21,6 +21,8 @@ export interface IFunding extends Document {
   faqsGuidelines?: string;
   currencyOfFunding?: string;
   taxImplications?: string;
+  eligibilityCriteria?: string;
+  pastRecipients?: string;
 }
 
 // Create the schema for the Funding model
@@ -86,6 +88,12 @@ const FundingSchema: Schema<IFunding> = new Schema(
       type: String,
     },
     taxImplications: {
+      type: String,
+    },
+    eligibilityCriteria: {
+      type: String,
+    },
+    pastRecipients: {
       type: String,
     },
   },
