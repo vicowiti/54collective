@@ -32,7 +32,7 @@ import { FaArrowRightLong } from "react-icons/fa6";
 
 const Resources = () => {
   return (
-    <div className="bg-[#f6f6e8] sm:p-10">
+    <div id="resources" className="bg-[#f6f6e8] sm:p-10">
       <h3 className="font-bold text-3xl mb-3">Resources</h3>
 
       <div className="sm:grid  gap-10 overflow-hidden">
@@ -57,4 +57,3 @@ const Resources = () => {
 };
 
 export default Resources;
-

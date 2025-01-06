@@ -7,7 +7,8 @@ import { MagnifyingGlassIcon } from "@heroicons/react/20/solid";
 import { Bars3CenterLeftIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import axios from "axios";
 import Link from "next/link";
-import { Fragment } from "react";
+import { Fragment, useState } from "react";
+import { FaChevronDown } from "react-icons/fa6";
 
 function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(" ");
@@ -15,6 +16,7 @@ function classNames(...classes: string[]) {
 
 const Navbar = () => {
   const { user, clearUserData } = useUserData();
+  const [dropdownVisible, setDropdownVisible] = useState(false);
 
   async function handleLogout() {
     clearUserData();
@@ -22,7 +24,7 @@ const Navbar = () => {
   }
 
   console.log("user in navbar", user);
-  
+
   return (
     <nav className="p-3 bg-[#2a2a27] ">
       <div className="max-w-[1340px] mx-auto">
@@ -86,18 +88,42 @@ const Navbar = () => {
                   <div className="hidden lg:block ">
                     <div className="flex items-center justify-end">
                       <div className="flex">
-                        <Link
-                          href="/funding"
-                          className="rounded-md px-3 py-2 text-sm font-medium text-white hover:text-[#e5cf00] duration-200 hover:scale-110"
-                        >
+                        <button className="rounded-md px-3 py-2 text-sm font-medium text-white hover:text-[#e5cf00] duration-200 hover:scale-110">
                           Solutions
-                        </Link>
-                        <a
-                          href="/support"
-                          className="rounded-md px-3 py-2 text-sm font-medium text-white hover:text-[#e5cf00] duration-200 hover:scale-110"
+                        </button>
+
+                        <div
+                          className="relative"
+                          onClick={() => setDropdownVisible(!dropdownVisible)}
                         >
-                          Resources
-                        </a>
+                          <span className="rounded-md flex items-center gap-2 px-3 py-2 text-sm font-medium text-white hover:text-[#e5cf00] duration-200 hover:scale-110">
+                            Resources
+                            <FaChevronDown />
+                          </span>
+
+                          {dropdownVisible && (
+                            <div className="absolute w-36 top-full left-0 mt-1 bg-gray-700 rounded-md shadow-lg">
+                              <Link
+                                href="/funding"
+                                className="block px-4 py-2 text-sm text-white hover:bg-gray-600"
+                              >
+                                Funding
+                              </Link>
+                              <Link
+                                href="/support"
+                                className="block px-4 py-2 text-sm text-white hover:bg-gray-600"
+                              >
+                                Esos
+                              </Link>
+                              <Link
+                                href="/events"
+                                className="block px-4 py-2 text-sm text-white hover:bg-gray-600"
+                              >
+                                Events
+                              </Link>
+                            </div>
+                          )}
+                        </div>
                       </div>
                       {/* Profile dropdown */}
                       {!user ? (
