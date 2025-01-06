@@ -232,6 +232,27 @@ const Navbar = () => {
                     >
                       Your Profile
                     </Disclosure.Button>
+                    <Disclosure.Button
+                      as="a"
+                      href="/funding"
+                      className="block rounded-md px-3 py-2 text-base font-medium text-indigo-200 hover:bg-indigo-600 hover:text-indigo-100"
+                    >
+                      Funding
+                    </Disclosure.Button>
+                    <Disclosure.Button
+                      as="a"
+                      href="/support"
+                      className="block rounded-md px-3 py-2 text-base font-medium text-indigo-200 hover:bg-indigo-600 hover:text-indigo-100"
+                    >
+                      Esos
+                    </Disclosure.Button>
+                    <Disclosure.Button
+                      as="a"
+                      href="/events"
+                      className="block rounded-md px-3 py-2 text-base font-medium text-indigo-200 hover:bg-indigo-600 hover:text-indigo-100"
+                    >
+                      Events
+                    </Disclosure.Button>
 
                     <Disclosure.Button
                       as="a"
