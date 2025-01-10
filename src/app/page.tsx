@@ -5,12 +5,11 @@ import Resources from "@/components/Resources";
 
 const page = () => {
   return (
-    <div className="px-4 sm:px-0">
+    <div className="px-4  sm:px-20">
       <Hero />
       <NavCard />
       <Resources />
       <CTA />
-      
     </div>
   );
 };
