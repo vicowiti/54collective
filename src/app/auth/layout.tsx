@@ -14,19 +14,17 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <div
-      className={`flex flex-col sm:flex-row  my-5 mx-4 sm:mx-20   sm:my-10 `}
-    >
+    <div className={`flex flex-col sm:flex-row  my-5 mx-4  sm:my-10 `}>
       <div className="sm:flex-1 flex flex-col justify-between items-center p-8 rounded-t-xl sm:rounded-t-none sm:p-20 bg-[#64b500] sm:rounded-l-3xl ">
         <div>
           <img
             src="/landing/hero.png"
-            className="w-full h-auto mx-auto mt-10"
+            className="w-full w-[80%] h-auto mx-auto mt-10"
           />
         </div>
       </div>
 
-      <div className="sm:flex-1 bg-white sm:rounded-r-3xl shadow rounded-b-xl sm:rounded-b-none">
+      <div className="sm:w-[50%] bg-white sm:rounded-r-3xl shadow rounded-b-xl sm:rounded-b-none">
         {children}
       </div>
     </div>

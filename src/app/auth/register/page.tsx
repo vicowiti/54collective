@@ -11,7 +11,7 @@ import { toast } from "sonner";
 
 const Register = () => {
   const { setUserData } = useUserData();
-  const [open, setOpen] = useState(true);
+  const [open, setOpen] = useState(false);
   const [loading, setLoading] = useState(false);
   const router = useRouter();
   const handleRegister = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -53,7 +53,7 @@ const Register = () => {
   };
 
   return (
-    <div className="sm:p-20 p-8 ">
+    <div className="sm:p-12 p-8 ">
       <SuccessModal open={open} setOpen={setOpen} />
       <div className="mb-10">
         <h1 className="font-bold text-2xl text-center">
