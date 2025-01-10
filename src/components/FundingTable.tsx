@@ -1,10 +1,8 @@
 "use client";
-
-import axios from "axios";
-import { useEffect, useState } from "react";
-import { PiSpinner } from "react-icons/pi";
 import FundingSearch from "./FundingSearch";
 import FundingModal from "./FundingModal";
+import { fundingPrograms } from "@/data/fundingData";
+import { useState } from "react";
 
 export interface FundingOrganization {
   _id: string;
@@ -33,46 +31,63 @@ export interface FundingOrganization {
 }
 
 const FundingTable = () => {
-  const [data, setData] = useState<FundingOrganization[]>([]);
-  const [error, setError] = useState<string | null>(null);
-  const [loading, setLoading] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
   const [amount, setAmount] = useState("");
   const [region, setRegion] = useState("");
   const [industry, setIndustry] = useState("");
   const [fundingType, setfundingType] = useState("");
   const [search, setSearch] = useState(false);
+  const [data, setData] = useState(fundingPrograms);
 
-  useEffect(() => {
-    async function fetchData() {
-      try {
-        setLoading(true);
-        const response = await axios.get(
-          `/api/funding/getFunding?searchTerm=${searchTerm}&region=${region}&industry=${industry}&fundingType=${fundingType}&amount=${amount}`
-        );
-        setData(response.data);
-        setLoading(false);
-      } catch (error) {
-        console.error("Error fetching listing:", error);
-        setError("Error loading listing. Please try again later.");
-        setLoading(false);
-      }
-    }
+  const reset = () => {
+    setAmount("");
+    setRegion("");
+    setIndustry("");
+    setfundingType("");
+    setSearchTerm("");
+    setSearch(false);
+    setData(fundingPrograms);
+  };
 
-    fetchData();
-  }, [search]);
+  const filter = () => {
+    const filteredData = fundingPrograms.filter((program) => {
+      const matchesSearchTerm =
+        program.NameofFund.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        program.CountryRegionFocus.toLowerCase().includes(
+          searchTerm.toLowerCase()
+        ) ||
+        program.IndustryFocus.toLowerCase().includes(
+          searchTerm.toLowerCase()
+        ) ||
+        program.FundingType.toLowerCase().includes(searchTerm.toLowerCase());
 
-  if (loading) {
-    return (
-      <p className="text-xl text-center flex gap-5 justify-center items-center">
-        <PiSpinner className="animate-spin" /> Loading Funding List...
-      </p>
-    );
-  }
+      const matchesAmount =
+        amount === "" ||
+        program.FundingAmountRange.toLowerCase().includes(amount.toLowerCase());
 
-  if (error) {
-    return <p>{error}</p>;
-  }
+      const matchesRegion =
+        region === "" ||
+        program.CountryRegionFocus.toLowerCase().includes(region.toLowerCase());
+
+      const matchesIndustry =
+        industry === "" ||
+        program.IndustryFocus.toLowerCase().includes(industry.toLowerCase());
+
+      const matchesFundingType =
+        fundingType === "" ||
+        program.FundingType.toLowerCase().includes(fundingType.toLowerCase());
+
+      return (
+        matchesSearchTerm &&
+        matchesAmount &&
+        matchesRegion &&
+        matchesIndustry &&
+        matchesFundingType
+      );
+    });
+
+    setData(filteredData);
+  };
 
   return (
     <section>
@@ -90,11 +105,13 @@ const FundingTable = () => {
           setSearchTerm={setSearchTerm}
           search={search}
           setSearch={setSearch}
+          filter={filter}
+          reset={reset}
         />
       </div>
 
-      <table className="w-full">
-        <thead className="bg-[#80C22F] text-white font-semibold sm:font-bold text-sm sm:text-lg">
+      <table className="w-full max-w-screen">
+        <thead className="bg-[#80C22F] text-white  font-semibold sm:font-bold text-sm sm:text-lg">
           <tr>
             <th className="sm:p-3 py-2 text-left">Name</th>
             <th className="p-3  text-left hidden sm:table-cell">Industry</th>
@@ -110,19 +127,22 @@ const FundingTable = () => {
         <tbody>
           {data?.map((program, index) => (
             <tr key={index} className="border-b border-[#D5D5D5]">
-              <td className="p-3">{program.companyName}</td>
+              <td className="p-3">{program.NameofFund}</td>
               <td className="p-3 hidden sm:table-cell">
-                {program.industryFocus}
+                {program.IndustryFocus}
               </td>
               <td className="p-3 hidden sm:table-cell">
-                {program.countryRegionFocus}
+                {program.CountryRegionFocus}
               </td>
               <td className="p-3 hidden sm:table-cell">
-                {program.businessStage}
+                {program.BusinessStage}
               </td>
-              <td className="p-3">{program.fundingType}</td>
+              <td className="p-3">
+                {program.FundingType}
+                <p className=" sm:hidden ">{program.FundingAmountRange}</p>
+              </td>
               <td className="p-3 hidden sm:table-cell">
-                {program.fundingAmountRange} $
+                {program.FundingAmountRange}
               </td>
               <td className="p-3">
                 <FundingModal program={program} />

@@ -38,33 +38,47 @@ const EsoTable = () => {
   const [industry, setIndustry] = useState("");
   const [supportType, setSupportType] = useState("");
   const [search, setSearch] = useState(false);
+  const [data, setData] = useState(esoData);
 
-  // useEffect(() => {
-  //   async function fetchData() {
-  //     try {
-  //       setLoading(true);
-  //       const response = await axios.get(
-  //         `/api/eso/getEsos?searchTerm=${searchTerm}&region=${region}&industry=${industry}&supportType=${supportType}`
-  //       );
-  //       setData(response.data);
-  //       setLoading(false);
-  //     } catch (error) {
-  //       console.error("Error fetching events:", error);
-  //       setError("Error loading events. Please try again later.");
-  //       setLoading(false);
-  //     }
-  //   }
+  const reset = () => {
+    setRegion("");
+    setIndustry("");
+    setSupportType("");
+    setSearchTerm("");
+    setData(esoData);
+  };
 
-  //   fetchData();
-  // }, [search]);
+  const filter = () => {
+    const filteredData = esoData.filter((program) => {
+      const matchesSearchTerm =
+        program.ProgramName.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        program.TargetEntrepreneurs.toLowerCase().includes(
+          searchTerm.toLowerCase()
+        ) ||
+        program.TypeofSupport.toLowerCase().includes(searchTerm.toLowerCase());
 
-  // if (loading) {
-  //   return (
-  //     <p className="text-xl text-center flex gap-5 justify-center items-center">
-  //       <PiSpinner className="animate-spin" /> Loading ESOs...
-  //     </p>
-  //   );
-  // }
+      const matchesRegion =
+        region === "" ||
+        program.RegionalFocus.toLowerCase().includes(region.toLowerCase());
+
+      const matchesIndustry =
+        industry === "" ||
+        program.Industry.toLowerCase().includes(industry.toLowerCase());
+
+      const matchesSupportType =
+        supportType === "" ||
+        program.TypeofSupport.toLowerCase().includes(supportType.toLowerCase());
+
+      return (
+        matchesSearchTerm &&
+        matchesRegion &&
+        matchesIndustry &&
+        matchesSupportType
+      );
+    });
+
+    setData(filteredData);
+  };
 
   return (
     <section>
@@ -80,6 +94,8 @@ const EsoTable = () => {
           setSupportType={setSupportType}
           setSearch={setSearch}
           search={search}
+          reset={reset}
+          filter={filter}
         />
       </div>
 
@@ -96,7 +112,7 @@ const EsoTable = () => {
           </tr>
         </thead>
         <tbody>
-          {esoData?.map((program, index) => (
+          {data?.map((program, index) => (
             <tr key={index} className="border-b border-[#D5D5D5]">
               <td className="p-3">{program.ProgramName}</td>
               <td className="p-3 hidden sm:table-cell">

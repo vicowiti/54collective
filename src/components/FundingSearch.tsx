@@ -16,23 +16,12 @@ interface Props {
   setAmount: React.Dispatch<React.SetStateAction<string>>;
   setSearch: React.Dispatch<React.SetStateAction<boolean>>;
   search: boolean;
+  filter: () => void;
+  reset: () => void;
 }
 
 const FundingSearch = (props: Props) => {
   const [showFilter, setShowFilter] = useState(false);
-  const handleSearch = () => {
-    props.setSearch(!props.search);
-  };
-
-  const handleReset = () => {
-    props.setSearchTerm("");
-    props.setRegion("");
-    props.setIndustry("");
-    props.setfundingType("");
-    props.setAmount("");
-
-    props.setSearch(!props.search);
-  };
 
   return (
     <div>
@@ -165,13 +154,13 @@ const FundingSearch = (props: Props) => {
 
         <div className="sm:flex-1 flex items-center gap-3">
           <button
-            onClick={handleSearch}
+            onClick={props.filter}
             className="bg-[#80C22F] text-white px-4 py-2 w-full rounded-lg text-sm"
           >
             Search
           </button>
           <button
-            onClick={handleReset}
+            onClick={props.reset}
             className="bg-[#80C22F] text-white px-4 py-2 w-full rounded-lg text-sm"
           >
             Reset
@@ -295,13 +284,13 @@ const FundingSearch = (props: Props) => {
 
         <div className="sm:flex-1 flex items-center gap-3">
           <button
-            onClick={handleSearch}
+            onClick={props.filter}
             className="bg-[#80C22F] text-white px-4 py-2 w-full rounded-lg text-sm"
           >
             Search
           </button>
           <button
-            onClick={handleReset}
+            onClick={props.reset}
             className="bg-[#80C22F] text-white px-4 py-2 w-full rounded-lg text-sm"
           >
             Reset

@@ -1,203 +1,42 @@
-// "use client";
-// import { Fragment, useState } from "react";
-// import { Dialog, Transition } from "@headlessui/react";
-
-// import { FaLocationDot } from "react-icons/fa6";
-// import { FundingOrganization } from "./FundingTable";
-
-// interface Props {
-//   program: FundingOrganization;
-// }
-
-// export default function FundingModal(props: Props) {
-//   const [open, setOpen] = useState(false);
-
-//   return (
-//     <>
-//       <button
-//         onClick={() => setOpen(true)}
-//         className="text-[#80C22F] whitespace-nowrap border border-[#80C22F] p-2 text-xs sm:p-3 rounded-md"
-//       >
-//         View Details
-//       </button>
-//       <Transition.Root show={open} as={Fragment}>
-//         <Dialog as="div" className="relative z-10" onClose={setOpen}>
-//           <Transition.Child
-//             as={Fragment}
-//             enter="ease-out duration-300"
-//             enterFrom="opacity-0"
-//             enterTo="opacity-100"
-//             leave="ease-in duration-200"
-//             leaveFrom="opacity-100"
-//             leaveTo="opacity-0"
-//           >
-//             <div className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" />
-//           </Transition.Child>
-
-//           <div className="fixed inset-0 z-10 overflow-y-auto">
-//             <div className="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
-//               <Transition.Child
-//                 as={Fragment}
-//                 enter="ease-out duration-300"
-//                 enterFrom="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
-//                 enterTo="opacity-100 translate-y-0 sm:scale-100"
-//                 leave="ease-in duration-200"
-//                 leaveFrom="opacity-100 translate-y-0 sm:scale-100"
-//                 leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
-//               >
-//                 <Dialog.Panel className="relative transform overflow-hidden rounded-lg bg-white px-4 pt-5 pb-4 text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-7xl sm:p-6">
-//                   <div>
-//                     <header className="flex flex-col sm:flex-row justify-between items-center">
-//                       <div>
-//                         <h2 className="font-bold text-xl my-2">
-//                           {props.program.companyName}
-//                         </h2>
-//                         <p className="flex items-center gap-3 text-[#4F4F4F]">
-//                           <FaLocationDot /> {props.program.countryRegionFocus}
-//                         </p>
-//                         <button className="bg-[#FDF9D6] px-2 py-1 text-[#E5CF00] text-xs my-2 rounded-md">
-//                           {props.program.businessStage}
-//                         </button>
-//                       </div>
-//                       <div>
-//                         <button className="bg-[#64B500] text-white px-3 text-xs py-2 rounded-md">
-//                           Apply
-//                         </button>
-//                       </div>
-//                     </header>
-
-//                     <section className="grid grid-cols-1 sm:grid-cols-2 gap-4 my-4">
-//                       <div className="flex flex-col gap-3">
-//                         <p className="flex gap-3 text-sm text-[#8C8C8C]">
-//                           Industry Focus{" "}
-//                           <span className="font-bold text-black">
-//                             {props.program.industryFocus}
-//                           </span>
-//                         </p>
-//                         <p className="flex gap-3 text-sm text-[#8C8C8C]">
-//                           Funding Type{" "}
-//                           <span className="font-bold text-black">
-//                             {props.program.fundingType}
-//                           </span>
-//                         </p>
-//                         <p className="flex gap-3 text-sm text-[#8C8C8C]">
-//                           Website Link{" "}
-//                           <span className="font-bold text-black">
-//                             <a
-//                               href={props.program.website}
-//                               target="_blank"
-//                               rel="noopener noreferrer"
-//                             >
-//                               {props.program.website}
-//                             </a>
-//                           </span>
-//                         </p>
-//                         <p className="flex gap-3 text-sm text-[#8C8C8C]">
-//                           Programs Offered{" "}
-//                           <span className="font-bold text-black">
-//                             {props.program.programDetails}
-//                           </span>
-//                         </p>
-//                         <p className="flex gap-3 text-sm text-[#8C8C8C]">
-//                           Application Deadline{" "}
-//                           <span className="font-bold text-black">
-//                             {props.program.applicationDeadline}
-//                           </span>
-//                         </p>
-//                         <p className="flex gap-3 text-sm text-[#8C8C8C]">
-//                           Duration of Support{" "}
-//                           <span className="font-bold text-black">
-//                             {props.program.durationOfSupport}
-//                           </span>
-//                         </p>
-//                         <p className="flex gap-3 text-sm text-[#8C8C8C]">
-//                           Non-Monetary Support{" "}
-//                           <span className="font-bold text-black">
-//                             {props.program.nonMonetarySupport}
-//                           </span>
-//                         </p>
-//                       </div>
-
-//                       <div className="flex flex-col gap-3">
-//                         <p className="flex gap-3 text-sm text-[#8C8C8C]">
-//                           Application Frequency{" "}
-//                           <span className="font-bold text-black">
-//                             {props.program.applicationFrequency}
-//                           </span>
-//                         </p>
-//                         <p className="flex gap-3 text-sm text-[#8C8C8C]">
-//                           Eligibility Criteria{" "}
-//                           <span className="font-bold text-black">
-//                             {props.program.eligibilityCriteria}
-//                           </span>
-//                         </p>
-//                         <p className="flex gap-3 text-sm text-[#8C8C8C]">
-//                           Funding Amount Range{" "}
-//                           <span className="font-bold text-black">
-//                             {props.program.fundingAmountRange}
-//                           </span>
-//                         </p>
-//                         <p className="flex gap-3 text-sm text-[#8C8C8C]">
-//                           Currency of Funding{" "}
-//                           <span className="font-bold text-black">
-//                             {props.program.currencyOfFunding}
-//                           </span>
-//                         </p>
-//                       </div>
-//                     </section>
-
-//                     <section>
-//                       <h3 className="font-semibold mt-5 text-lg">
-//                         Requirements
-//                       </h3>
-//                       <ul className="pl-4 list-disc">
-//                         {props.program.requiredDocuments && (
-//                           <li>
-//                             Required Documents:{" "}
-//                             {props.program.requiredDocuments}
-//                           </li>
-//                         )}
-//                         {props.program.restrictionsExclusions && (
-//                           <li>
-//                             Restrictions & Exclusions:{" "}
-//                             {props.program.restrictionsExclusions}
-//                           </li>
-//                         )}
-//                       </ul>
-//                     </section>
-//                   </div>
-//                 </Dialog.Panel>
-//               </Transition.Child>
-//             </div>
-//           </div>
-//         </Dialog>
-//       </Transition.Root>
-//     </>
-//   );
-// }
-
 "use client";
 
 import { Fragment, useState } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { FaLocationDot } from "react-icons/fa6";
-import { FundingOrganization } from "./FundingTable";
+import { FaTimes } from "react-icons/fa";
 
 interface Props {
-  program: FundingOrganization;
+  program: {
+    NameofFund: string;
+    FundingType: string;
+    BusinessStage: string;
+    IndustryFocus: string;
+    FundingAmountRange: string;
+    EligibilityCriteria: string;
+    WebsiteLink: string;
+    NonMonetarySupport: string;
+    ApplicationDeadline: string;
+    ApplicationFrequency: string;
+    CountryRegionFocus: string;
+    PastRecipients: string;
+    DurationofSupport: string;
+  };
 }
 
-export default function FundingModal({ program }: Props) {
+export default function EsoModal({ program }: Props) {
   const [open, setOpen] = useState(false);
 
   return (
     <>
+      {/* Trigger Button */}
       <button
         onClick={() => setOpen(true)}
-        className="text-[#80C22F] border border-[#80C22F] px-3 py-2 text-xs rounded-md"
+        className="text-[#80C22F] whitespace-nowrap border border-[#80C22F] px-3 py-2 text-xs sm:px-4 sm:py-3 rounded-md"
       >
         View Details
       </button>
+
+      {/* Modal */}
       <Transition.Root show={open} as={Fragment}>
         <Dialog as="div" className="relative z-10" onClose={setOpen}>
           {/* Background Overlay */}
@@ -224,107 +63,79 @@ export default function FundingModal({ program }: Props) {
                 leaveFrom="opacity-100 translate-y-0 sm:scale-100"
                 leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
               >
-                <Dialog.Panel className="relative w-full max-w-2xl transform rounded-lg bg-white p-6 text-left shadow-xl transition-all">
+                <Dialog.Panel className="relative w-full pb-5 max-w-4xl transform rounded-lg bg-white p-6 text-left shadow-xl transition-all">
                   {/* Header */}
-                  <header className="flex flex-col sm:flex-row justify-between items-start sm:items-center">
+                  <div className="p-3 rounded-full hover:bg-gray-100 absolute right-2 top-2">
+                    <FaTimes onClick={() => setOpen(false)} />
+                  </div>
+                  <header className="flex flex-col pt-5 sm:flex-row justify-between items-start sm:items-center mb-6">
                     <div>
                       <h2 className="text-xl font-bold mb-2">
-                        {program.companyName}
+                        {program.NameofFund}
                       </h2>
                       <p className="flex items-center text-sm text-[#4F4F4F]">
                         <FaLocationDot className="mr-2" />
-                        {program.countryRegionFocus}
+                        {program.CountryRegionFocus}
                       </p>
-                      <button className="mt-2 bg-[#FDF9D6] text-[#E5CF00] text-xs px-2 py-1 rounded-md">
-                        {program.businessStage}
-                      </button>
                     </div>
-                    <button className="mt-4 sm:mt-0 bg-[#64B500] text-white text-xs px-4 py-2 rounded-md">
-                      Apply
-                    </button>
+                    <a
+                      target="_blank"
+                      href={program.WebsiteLink}
+                      className="mt-4 sm:mt-0 bg-[#64B500] text-white text-xs px-4 py-2 rounded-md"
+                    >
+                      Learn More
+                    </a>
                   </header>
 
                   {/* Content */}
-                  <section className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-6">
+                  <section className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                     {/* Column 1 */}
-                    <div className="flex flex-col gap-3">
-                      <InfoRow
-                        label="Industry Focus"
-                        value={program.industryFocus}
-                      />
+                    <div className="flex flex-col gap-4">
                       <InfoRow
                         label="Funding Type"
-                        value={program.fundingType}
+                        value={program.FundingType}
                       />
                       <InfoRow
-                        label="Website Link"
-                        value={
-                          <a
-                            href={program.website}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-blue-600 underline"
-                          >
-                            {program.website}
-                          </a>
-                        }
+                        label="Business Stage"
+                        value={program.BusinessStage}
                       />
                       <InfoRow
-                        label="Programs Offered"
-                        value={program.programDetails}
+                        label="Industry Focus"
+                        value={program.IndustryFocus}
                       />
                       <InfoRow
-                        label="Application Deadline"
-                        value={program.applicationDeadline}
+                        label="Funding Amount"
+                        value={program.FundingAmountRange}
                       />
                       <InfoRow
-                        label="Duration of Support"
-                        value={program.durationOfSupport}
-                      />
-                      <InfoRow
-                        label="Non-Monetary Support"
-                        value={program.nonMonetarySupport}
+                        label="Eligibility Criteria"
+                        value={program.EligibilityCriteria}
                       />
                     </div>
 
                     {/* Column 2 */}
-                    <div className="flex flex-col gap-3">
+                    <div className="flex flex-col gap-4">
+                      <InfoRow
+                        label="Non Moneraty Support"
+                        value={program.NonMonetarySupport}
+                      />
                       <InfoRow
                         label="Application Frequency"
-                        value={program.applicationFrequency}
+                        value={program.ApplicationFrequency}
                       />
                       <InfoRow
-                        label="Eligibility Criteria"
-                        value={program.eligibilityCriteria}
+                        label="Region Focus"
+                        value={program.CountryRegionFocus}
                       />
                       <InfoRow
-                        label="Funding Amount Range"
-                        value={program.fundingAmountRange}
+                        label="Past Recipients"
+                        value={program.PastRecipients}
                       />
                       <InfoRow
-                        label="Currency of Funding"
-                        value={program.currencyOfFunding}
+                        label="Duration of Support"
+                        value={program.DurationofSupport}
                       />
                     </div>
-                  </section>
-
-                  {/* Requirements Section */}
-                  <section className="mt-6">
-                    <h3 className="text-lg font-semibold mb-2">Requirements</h3>
-                    <ul className="list-disc pl-5 space-y-1 text-sm text-[#4F4F4F]">
-                      {program.requiredDocuments && (
-                        <li>
-                          <strong>Required Documents:</strong>{" "}
-                          {program.requiredDocuments}
-                        </li>
-                      )}
-                      {program.restrictionsExclusions && (
-                        <li>
-                          <strong>Restrictions & Exclusions:</strong>{" "}
-                          {program.restrictionsExclusions}
-                        </li>
-                      )}
-                    </ul>
                   </section>
                 </Dialog.Panel>
               </Transition.Child>
@@ -336,10 +147,12 @@ export default function FundingModal({ program }: Props) {
   );
 }
 
+// Reusable Component for Info Rows
 function InfoRow({ label, value }: { label: string; value: React.ReactNode }) {
   return (
-    <p className="text-sm text-[#8C8C8C]">
-      {label}: <span className="font-bold text-black">{value}</span>
+    <p className="text-sm text-[#8C8C8C] flex">
+      <span className="flex-1">{label}:</span>{" "}
+      <span className="font-semibold text-black flex-1">{value}</span>
     </p>
   );
 }

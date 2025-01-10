@@ -15,21 +15,12 @@ interface Props {
   setSupportType: React.Dispatch<React.SetStateAction<string>>;
   setSearch: React.Dispatch<React.SetStateAction<boolean>>;
   search: boolean;
+  reset: () => void;
+  filter: () => void;
 }
 
 const EsoSearch = (props: Props) => {
   const [showFilter, setShowFilter] = useState(false);
-  const handleSearch = () => {
-    props.setSearch(!props.search);
-  };
-
-  const handleReset = () => {
-    props.setSearchTerm("");
-    props.setRegion("");
-    props.setIndustry("");
-    props.setSupportType("");
-    props.setSearch(!props.search);
-  };
 
   return (
     <div>
@@ -141,13 +132,13 @@ const EsoSearch = (props: Props) => {
         </div>
         <div className="sm:flex-1 flex items-center gap-3">
           <button
-            onClick={handleSearch}
+            onClick={props.filter}
             className="bg-[#80C22F] text-white px-4 py-2 w-full rounded-lg text-sm"
           >
             Search
           </button>
           <button
-            onClick={handleReset}
+            onClick={props.reset}
             className="bg-[#80C22F] text-white px-4 py-2 w-full rounded-lg text-sm"
           >
             Reset
@@ -250,13 +241,13 @@ const EsoSearch = (props: Props) => {
         </div>
         <div className="sm:flex-1 flex items-center gap-3">
           <button
-            onClick={handleSearch}
+            onClick={props.filter}
             className="bg-[#80C22F] text-white px-4 py-2 w-full rounded-lg text-sm"
           >
             Search
           </button>
           <button
-            onClick={handleReset}
+            onClick={props.reset}
             className="bg-[#80C22F] text-white px-4 py-2 w-full rounded-lg text-sm"
           >
             Reset
