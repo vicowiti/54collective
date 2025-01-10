@@ -1,98 +1,104 @@
-"use client";
-import axios from "axios";
-import Image from "next/image";
-import { useEffect, useState } from "react";
-import { FaArrowRightLong, FaLocationDot } from "react-icons/fa6";
-import { MdOutlineCalendarMonth } from "react-icons/md";
-import { PiSpinner } from "react-icons/pi";
+// "use client";
 
-interface EventItem {
-  _id: string;
-  description: string;
-  date: string;
-  location: string;
-  name: string;
-  website?: string;
-  time?: string;
+// interface Props {
+//   events: {
+//     Event: string;
+//     Location: string;
+//     Date: string;
+//     Time: string;
+//     Link: string;
+//     Image: string;
+//   }[];
+// }
+
+// const EventListing = ({ events }: Props) => {
+//   return (
+//     <section className="grid grid-cols-1 sm:grid-cols-2 gap-8">
+//       {events.map((event) => (
+//         <article key={event.Event}>
+//           <div className="flex flex-col sm:flex-row gap-4">
+//             <img
+//               src={event.Image}
+//               alt={event.Event}
+//               className="w-full sm:w-1/2"
+//             />
+//             <div className="flex flex-col gap-2">
+//               <h2 className="font-bold text-2xl">{event.Event}</h2>
+//               <p className="text-gray-500">{event.Location}</p>
+//               <p className="text-gray-500">{event.Date}</p>
+//               <p className="text-gray-500">{event.Time}</p>
+//               <a href={event.Link} className="text-blue-500 hover:underline">
+//                 Learn More
+//               </a>
+//             </div>
+//           </div>
+//         </article>
+//       ))}
+//     </section>
+//   );
+// };
+
+// export default EventListing;
+
+"use client";
+
+interface Props {
+  events: {
+    Event: string;
+    Location: string;
+    Date: string;
+    Time: string;
+    Link: string;
+    Image: string;
+  }[];
 }
 
-const EventListing = () => {
-  const [data, setData] = useState<EventItem[]>([]);
-  const [error, setError] = useState<string | null>(null);
-  const [loading, setLoading] = useState<boolean>(true);
-
-  useEffect(() => {
-    async function fetchData() {
-      try {
-        setLoading(true);
-        const response = await axios.get("/api/events/getEvents");
-        setData(response.data);
-        setLoading(false);
-      } catch (error) {
-        console.error("Error fetching events:", error);
-        setError("Error loading events. Please try again later.");
-        setLoading(false);
-      }
-    }
-
-    fetchData();
-  }, []);
-
-  if (loading) {
-    return (
-      <p className="text-xl text-center flex gap-5 justify-center items-center">
-        <PiSpinner className="animate-spin" /> Loading Events...
-      </p>
-    );
-  }
-
-  if (error) {
-    return <p>{error}</p>;
-  }
-
+const EventListing = ({ events }: Props) => {
   return (
-    <section>
-      {data?.map((item) => (
+    <section className="grid grid-cols-1  sm:grid-cols-2 gap-6">
+      {events.map((event) => (
         <article
-          key={item._id}
-          className="flex flex-col sm:flex-row gap-10 mb-10"
+          key={event.Event}
+          className="bg-white shadow-lg rounded-xl overflow-hidden relative"
         >
-          <div className="flex flex-col items-center gap-2 p-5 bg-white shadow rounded-xl self-start">
-            <h2 className="font-bold text-xl">{item.date.split(" ")[0]}</h2>
-            <p className="text-[#E5CF00] font-bold text-xl">
-              {item.date.split(" ")[1]}
-            </p>
-          </div>
-          <div>
-            <Image
-              height={50}
-              width={50}
-              src={`/event-banner.png`}
-              alt={item.name}
-              className="h-full w-[300px] object-cover rounded-md"
+          {/* Image Section */}
+          <div className="relative">
+            <img
+              src={event.Image}
+              alt={event.Event}
+              className="w-full h-48 object-cover"
             />
+            {/* Circular Date Badge */}
+            <div className="absolute top-4 right-4 bg-[#65b602] text-white flex-col text-center rounded-full w-12 h-12 flex items-center justify-center font-bold text-sm">
+              <span>
+                {new Date(event.Date).toLocaleString("default", {
+                  day: "2-digit",
+                })}
+              </span>
+              <span className="block text-[10px] uppercase">
+                {new Date(event.Date).toLocaleString("default", {
+                  month: "short",
+                })}
+              </span>
+            </div>
           </div>
-          <div>
-            <section>
-              <h3 className="text-xl font-bold mb-3">{item.name}</h3>
-              <p className="flex items-center gap-3 text-[#E5CF00] sm:text-lg mb-2">
-                <MdOutlineCalendarMonth color="#2A2A27" size={22} />
-                {item.date}
-              </p>
-              <p className="flex items-center gap-3 text-[#E5CF00] sm:text-lg mb-2">
-                <FaLocationDot color="#2A2A27" size={22} />
-                {item.location}
-              </p>
-              <p className="text-sm sm:text-lg my-3">{item.description}</p>
-            </section>
-            <section className="flex items-center gap-3">
-              <button className="bg-[#80C22F] text-white p-3 sm:font-semibold rounded-lg">
-                Add to Calendar
-              </button>
-              <button className="text-[#80C22F] border border-[#80C22F] flex p-3 items-center gap-2 sm:font-semibold rounded-lg">
-                See More <FaArrowRightLong />
-              </button>
-            </section>
+
+          {/* Content Section */}
+          <div className="p-4 mt-3">
+            <h2 className="font-bold text-lg sm:text-xl text-gray-800">
+              {event.Event}
+            </h2>
+            <p className="text-gray-500">{event.Location}</p>
+            <p className="text-gray-500 mt-1">
+              {event.Date} @ {event.Time}
+            </p>
+            <a
+              target="_blank"
+              href={event.Link}
+              className="inline-block mt-4 bg-[#65b602] text-white text-sm px-4 py-2 rounded-full shadow hover:bg-green-600"
+            >
+              View More →
+            </a>
           </div>
         </article>
       ))}

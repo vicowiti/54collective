@@ -40,7 +40,7 @@ const Resources = () => {
           {resourceData.map((item, index) => (
             <article
               key={index}
-              className="flex-shrink-0 w-64 sm:w-auto bg-white rounded-lg p-4 shadow "
+              className="flex-shrink-0 w-64 sm:w-auto  rounded-lg p-4  "
             >
               <img src={item.icon} className="w-20 h-auto" alt={item.title} />
               <h1 className="font-bold text-xl my-2">{item.title}</h1>

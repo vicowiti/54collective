@@ -18,12 +18,6 @@ export default function RootLayout({
       className={`flex flex-col sm:flex-row min-h-[80vh] my-5 mx-4  sm:my-10 `}
     >
       <div className="sm:flex-1 flex flex-col justify-between items-center p-8 rounded-t-xl sm:rounded-t-none sm:p-20 bg-[#64b500] sm:rounded-l-3xl ">
-        <div className="w-[80%] sm:w-[50%]">
-          <img
-            src="/landing/logo.png"
-            className="w-full h-auto mx-auto mt-10"
-          />
-        </div>
         <div>
           <img
             src="/landing/hero.png"
