@@ -3,10 +3,11 @@
 import { Fragment, useState } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { FaLocationDot } from "react-icons/fa6";
-import { EntrepreneurialSupportOrganization } from "./EsoTable";
+import { ESOData } from "@/data/esoData";
+import { FaTimes } from "react-icons/fa";
 
 interface Props {
-  program: EntrepreneurialSupportOrganization;
+  program: ESOData;
 }
 
 export default function EsoModal({ program }: Props) {
@@ -49,23 +50,27 @@ export default function EsoModal({ program }: Props) {
                 leaveFrom="opacity-100 translate-y-0 sm:scale-100"
                 leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
               >
-                <Dialog.Panel className="relative w-full max-w-4xl transform rounded-lg bg-white p-6 text-left shadow-xl transition-all">
+                <Dialog.Panel className="relative w-full pb-5 max-w-4xl transform rounded-lg bg-white p-6 text-left shadow-xl transition-all">
                   {/* Header */}
-                  <header className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6">
+                  <div className="p-3 rounded-full hover:bg-gray-100 absolute right-2 top-2">
+                    <FaTimes onClick={() => setOpen(false)} />
+                  </div>
+                  <header className="flex flex-col pt-5 sm:flex-row justify-between items-start sm:items-center mb-6">
                     <div>
                       <h2 className="text-xl font-bold mb-2">
-                        {program.esoName}
+                        {program.ProgramName}
                       </h2>
                       <p className="flex items-center text-sm text-[#4F4F4F]">
                         <FaLocationDot className="mr-2" />
-                        {program.location}
+                        {program.RegionalFocus}
                       </p>
                     </div>
                     <a
-                      href={program.websiteUrl}
+                      target="_blank"
+                      href={program.WebsiteLink}
                       className="mt-4 sm:mt-0 bg-[#64B500] text-white text-xs px-4 py-2 rounded-md"
                     >
-                      Apply
+                      Learn More
                     </a>
                   </header>
 
@@ -74,82 +79,44 @@ export default function EsoModal({ program }: Props) {
                     {/* Column 1 */}
                     <div className="flex flex-col gap-4">
                       <InfoRow
+                        label="Organization"
+                        value={program.Organization}
+                      />
+                      <InfoRow
+                        label="Type of Support"
+                        value={program.TypeofSupport}
+                      />
+                      <InfoRow label="Industry" value={program.Industry} />
+                      <InfoRow
                         label="Target Entrepreneurs"
-                        value={program.targetEntrepreneurs}
+                        value={program.TargetEntrepreneurs}
                       />
                       <InfoRow
-                        label="Industry Focus"
-                        value={program.industryFocus}
-                      />
-                      <InfoRow label="Fees" value={program.fees} />
-                      <InfoRow
-                        label="Website Link"
-                        value={
-                          <a
-                            href={program.websiteUrl}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-blue-600 underline"
-                          >
-                            {program.websiteUrl}
-                          </a>
-                        }
-                      />
-                      <InfoRow
-                        label="Programs Offered"
-                        value={program.programsOffered}
-                      />
-                      <InfoRow
-                        label="Mode of Delivery"
-                        value={program.modeOfDelivery}
-                      />
-                      <InfoRow
-                        label="Program Duration"
-                        value={program.programDuration}
-                      />
-                      <InfoRow
-                        label="Core Services"
-                        value={program.coreServices}
+                        label="Eligibility Criteria"
+                        value={program.EligibilityCriteria}
                       />
                     </div>
 
                     {/* Column 2 */}
                     <div className="flex flex-col gap-4">
                       <InfoRow
-                        label="Networking Opportunities"
-                        value={program.networkingOpportunities}
+                        label="Program Duration"
+                        value={program.ProgramDuration}
+                      />
+                      <InfoRow
+                        label="Mode of Delivery"
+                        value={program.ModeofDelivery}
+                      />
+                      <InfoRow label="Fees" value={program.Fees} />
+                      <InfoRow
+                        label="Impact Metrics"
+                        value={program.ImpactMetrics}
                       />
                       <InfoRow
                         label="Application Process"
-                        value={program.applicationProcess}
-                      />
-                      <InfoRow
-                        label="Languages Supported"
-                        value={program.languagesSupported}
-                      />
-                      <InfoRow
-                        label="Impact Metrics"
-                        value={program.impactMetrics}
+                        value={program.ApplicationProcess}
                       />
                     </div>
-                  </section>
-
-                  {/* Special Focus Areas */}
-                  <section className="mt-6">
-                    <h3 className="text-lg font-semibold mb-2">
-                      Special Focus Areas
-                    </h3>
-                    <p className="text-sm text-[#4F4F4F]">
-                      {program.specialFocusAreas}
-                    </p>
-                  </section>
-
-                  {/* Partnerships */}
-                  <section className="mt-6">
-                    <h3 className="text-lg font-semibold mb-2">Partnerships</h3>
-                    <p className="text-sm text-[#4F4F4F]">
-                      {program.partnerships}
-                    </p>
                   </section>
                 </Dialog.Panel>
               </Transition.Child>
@@ -164,8 +131,9 @@ export default function EsoModal({ program }: Props) {
 // Reusable Component for Info Rows
 function InfoRow({ label, value }: { label: string; value: React.ReactNode }) {
   return (
-    <p className="text-sm text-[#8C8C8C]">
-      {label}: <span className="font-bold text-black">{value}</span>
+    <p className="text-sm text-[#8C8C8C] flex">
+      <span className="flex-1">{label}:</span>{" "}
+      <span className="font-semibold text-black flex-1">{value}</span>
     </p>
   );
 }

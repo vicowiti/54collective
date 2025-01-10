@@ -53,17 +53,18 @@ const Navbar = () => {
                           Resources
                         </Link>
                         <Link
+                          href={`/support`}
+                          className="rounded-md px-3 py-2 text-sm font-medium text-white hover:text-[#e5cf00] duration-200 hover:scale-110"
+                        >
+                          Programs
+                        </Link>
+                        <Link
                           href={`/funding`}
                           className="rounded-md px-3 py-2 text-sm font-medium text-white hover:text-[#e5cf00] duration-200 hover:scale-110"
                         >
                           Funding
                         </Link>
-                        <Link
-                          href={`/support`}
-                          className="rounded-md px-3 py-2 text-sm font-medium text-white hover:text-[#e5cf00] duration-200 hover:scale-110"
-                        >
-                          Esos
-                        </Link>
+
                         <Link
                           href={`/events`}
                           className="rounded-md px-3 py-2 text-sm font-medium text-white hover:text-[#e5cf00] duration-200 hover:scale-110"
@@ -99,17 +100,17 @@ const Navbar = () => {
                   <div className="px-2">
                     <Disclosure.Button
                       as="a"
+                      href="/support"
+                      className="block rounded-md px-3 py-2 text-base font-medium text-indigo-200 hover:bg-indigo-600 hover:text-indigo-100"
+                    >
+                      Programs
+                    </Disclosure.Button>
+                    <Disclosure.Button
+                      as="a"
                       href="/funding"
                       className="block rounded-md px-3 py-2 text-base font-medium text-indigo-200 hover:bg-indigo-600 hover:text-indigo-100"
                     >
                       Funding
-                    </Disclosure.Button>
-                    <Disclosure.Button
-                      as="a"
-                      href="/support"
-                      className="block rounded-md px-3 py-2 text-base font-medium text-indigo-200 hover:bg-indigo-600 hover:text-indigo-100"
-                    >
-                      Esos
                     </Disclosure.Button>
                     <Disclosure.Button
                       as="a"
