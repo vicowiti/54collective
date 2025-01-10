@@ -42,7 +42,7 @@ export default function RootLayout({
         <Toaster richColors position="top-center" duration={3} />
         <div className="flex flex-col min-h-screen">
           <Navbar />
-          <main className="flex-grow mainbody w-full mx-auto px-20">
+          <main className="flex-grow mainbody w-full mx-auto sm:px-20">
             {children}
           </main>
           <Footer />
