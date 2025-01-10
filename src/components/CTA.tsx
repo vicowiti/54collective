@@ -32,7 +32,7 @@ const CTA = () => {
               onClick={() => router.push("/auth/register")}
               className="sm:p-3 p-2 mt-2  border border-[#f4f4f4] rounded-sm hover:bg-white hover:text-black transition text-sm sm:text-base"
             >
-              Sign Up
+              Show Interest
             </button>
           </div>
         </div>

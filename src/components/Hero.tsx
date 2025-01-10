@@ -1,10 +1,9 @@
-"use client"
+"use client";
 import Image from "next/image";
-import {useRouter} from "next/navigation"
+import { useRouter } from "next/navigation";
 
 const Hero = () => {
-
-  const navigate = useRouter()
+  const navigate = useRouter();
   return (
     <div className="w-full  bg-[#64B500] rounded-xl p-8 sm:p-20 mt-5 sm:mt-10">
       <div className="flex flex-col sm:flex-row  justify-between">
@@ -18,8 +17,11 @@ const Hero = () => {
             business through a thriving entrepreneurial community.
           </p>
 
-          <button onClick={() => navigate.push(`/auth/register`)} className="bg-[#E5CF00] text-[#2A2A27] py-3 px-3 sm:px-5 mt-4 rounded-md font-semibold">
-            Sign Up
+          <button
+            onClick={() => navigate.push(`/auth/register`)}
+            className="bg-[#E5CF00] text-[#2A2A27] py-3 px-3 sm:px-5 mt-4 rounded-md font-semibold"
+          >
+            Register Interest
           </button>
         </div>
         <div className="flex-1">

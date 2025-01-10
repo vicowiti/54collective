@@ -1,12 +1,10 @@
-
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { Toaster } from "sonner";
-
-
+import { GoogleAnalytics } from "@next/third-parties/google";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -46,6 +44,7 @@ export default function RootLayout({
           <Navbar />
           <main className="flex-grow mainbody w-full mx-auto">{children}</main>
           <Footer />
+          <GoogleAnalytics gaId="G-FR53TZEPYD" />
         </div>
       </body>
     </html>

@@ -1,5 +1,6 @@
 "use client";
 import { useUserData } from "@/app/hooks/useUserData";
+import SuccessModal from "@/components/SuccessModal";
 import axios from "axios";
 
 import { useRouter } from "next/navigation";
@@ -10,6 +11,7 @@ import { toast } from "sonner";
 
 const Register = () => {
   const { setUserData } = useUserData();
+  const [open, setOpen] = useState(true);
   const [loading, setLoading] = useState(false);
   const router = useRouter();
   const handleRegister = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -18,7 +20,7 @@ const Register = () => {
     const name = form.username.value;
     const email = form.email.value;
     const phoneNumber = form.number.value;
-    const password = form.password.value;
+    const password = "1234";
     const gender = form.gender.value;
 
     try {
@@ -38,6 +40,7 @@ const Register = () => {
         toast.success("User created!");
         router.push("/");
         setUserData(response.data.user);
+        setOpen(true);
       } else {
         toast.error("Could not create User.");
       }
@@ -50,10 +53,15 @@ const Register = () => {
   };
 
   return (
-    <div className="sm:p-20 p-8">
+    <div className="sm:p-20 p-8 ">
+      <SuccessModal open={open} setOpen={setOpen} />
       <div className="mb-10">
-        <h1 className="font-bold text-2xl text-center">Create Account</h1>
-        <p className="text-sm text-center">to access customized content</p>
+        <h1 className="font-bold text-2xl text-center">
+          Fill To Express Interest
+        </h1>
+        <p className="text-sm text-center">
+          We will be in touch with resources and opportunities.
+        </p>
       </div>
 
       <form onSubmit={(e) => handleRegister(e)} className="mt-10">
@@ -113,14 +121,17 @@ const Register = () => {
             >
               Gender
             </label>
-            <input
-              type="text"
+            <select
               name="gender"
               required
-              placeholder="Select Gender"
               id="gender"
               className="mt-1 p-3 block w-full rounded-md outline-none border-gray-300 shadow-sm bg-[#f6f9f8]  sm:text-sm"
-            />
+            >
+              <option value="">Select Gender</option>
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
+              <option value="Other">Other</option>
+            </select>
           </div>
         </div>
 

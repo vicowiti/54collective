@@ -15,7 +15,7 @@ export default function RootLayout({
 }>) {
   return (
     <div
-      className={`flex flex-col sm:flex-row min-h-[80vh] my-5 mx-4  sm:my-10 `}
+      className={`flex flex-col sm:flex-row  my-5 mx-4 sm:mx-20   sm:my-10 `}
     >
       <div className="sm:flex-1 flex flex-col justify-between items-center p-8 rounded-t-xl sm:rounded-t-none sm:p-20 bg-[#64b500] sm:rounded-l-3xl ">
         <div>

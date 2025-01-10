@@ -19,7 +19,8 @@ export default function RootLayout({
       <section className="flex justify-between flex-col sm:flex-row  items-center p-6 sm:p-10 bg-gradient-to-r from-[#64B500] to-[#B0DE77]">
         <div className="sm:flex-1 text-[#F4F4D4]">
           <h3 className="font-bold text-3xl sm:text-5xl">
-            Stay Connected to Africa’s Thriving Entrepreneurial Ecosystem.
+            Stay <span className="text-[#E5CF00]">Connected</span> to Africa’s
+            Thriving Entrepreneurial Ecosystem.
           </h3>
           <p className="text-lg sm:text-xl mt-3">
             Discover events, workshops, and networking opportunities to expand
