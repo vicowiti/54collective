@@ -22,7 +22,7 @@ export default function RootLayout({
             Stay <span className="text-[#E5CF00]">Connected</span> to Africa’s
             Thriving Entrepreneurial Ecosystem.
           </h3>
-          <p className="text-lg sm:text-xl mt-3">
+          <p className="hidden sm:block text-lg sm:text-xl mt-3">
             Discover events, workshops, and networking opportunities to expand
             your knowledge and connections.
           </p>

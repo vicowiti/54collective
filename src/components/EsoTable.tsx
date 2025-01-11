@@ -99,7 +99,7 @@ const EsoTable = () => {
         />
       </div>
 
-      <table className="w-full">
+      <table className="w-screen sm:w-full">
         <thead className="bg-[#80C22F] text-white font-semibold sm:font-bold text-sm sm:text-lg">
           <tr>
             <th className="sm:p-3 py-2 text-left">Program Name</th>
@@ -121,11 +121,15 @@ const EsoTable = () => {
         <tbody>
           {data?.map((program, index) => (
             <tr key={index} className="border-b border-[#D5D5D5]">
-              <td className="p-3">{program.ProgramName}</td>
+              <td className="p-3 text-sm sm:text-inherit">
+                {program.ProgramName}
+              </td>
               <td className="p-3 hidden sm:table-cell">
                 {program.Organization}
               </td>
-              <td className="p-3  sm:table-cell">{program.TypeofSupport}</td>
+              <td className="p-3  text-sm sm:text-inherit sm:table-cell">
+                {program.TypeofSupport}
+              </td>
               <td className="p-3 hidden sm:table-cell">{program.Industry}</td>
               <td className="p-3 hidden sm:table-cell">
                 {program.TargetEntrepreneurs}

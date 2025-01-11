@@ -21,7 +21,7 @@ const Hero = () => {
             onClick={() => navigate.push(`/auth/register`)}
             className="bg-[#E5CF00] text-[#2A2A27] py-3 px-3 sm:px-5 mt-4 rounded-md font-semibold"
           >
-            Register Interest
+            Join the Community
           </button>
         </div>
         <div className="flex-1">
