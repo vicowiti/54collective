@@ -100,7 +100,7 @@ const FundingTable = () => {
           region={region}
           setRegion={setRegion}
           fundingType={fundingType}
-          setfundingType={setfundingType}
+          setFundingType={setfundingType}
           searchTerm={searchTerm}
           setSearchTerm={setSearchTerm}
           search={search}
