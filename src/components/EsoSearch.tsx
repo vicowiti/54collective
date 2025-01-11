@@ -397,7 +397,7 @@ const EsoSearch = (props: Props) => {
               type="search"
               name="name"
               id="name"
-              placeholder="Search by name"
+              placeholder="Search Program Name"
               className="block w-full bg-transparent pl-8 border-0 p-0 text-gray-900 placeholder-gray-500 focus:ring-0 sm:text-sm outline-none"
             />
             <FaSearch className="absolute top-1/2 left-3 transform -translate-y-1/2 text-gray-400" />
