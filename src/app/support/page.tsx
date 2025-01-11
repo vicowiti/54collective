@@ -6,7 +6,7 @@ import EsoTable from "@/components/EsoTable";
 const Support = () => {
   const { user } = useUserData();
   return (
-    <div className="p-4">
+    <div className="sm:p-4">
       <div className="flex justify-end my-2 items-center">
         {user?.isAdmin && <NewESOModal />}
       </div>

@@ -56,11 +56,9 @@ const Register = () => {
     <div className="sm:p-12 p-8 ">
       <SuccessModal open={open} setOpen={setOpen} />
       <div className="mb-10">
-        <h1 className="font-bold text-2xl text-center">
-          Fill To Express Interest
-        </h1>
+        <h1 className="font-bold text-2xl text-center">Join the Community</h1>
         <p className="text-sm text-center">
-          We will be in touch with resources and opportunities.
+          Unlock the resources, insights and connections you need to succeed!
         </p>
       </div>
 

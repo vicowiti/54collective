@@ -2,6 +2,7 @@ export const fundingPrograms = [
   {
     NameofFund: "Tony Elumelu Foundation Entrepreneurship Programme",
     FundingType: "Grant",
+    Organization: "Tony Elumelu Foundation",
     BusinessStage: "Early-Stage",
     IndustryFocus: "All Industries",
     FundingAmountRange: "$5,000 ",
@@ -17,7 +18,8 @@ export const fundingPrograms = [
   },
   {
     NameofFund: "Business Accelerator Program",
-    FundingType: "54 Collective",
+    Organization: "54 Collective",
+    FundingType: "Grant",
     BusinessStage: "Early-Stage",
     IndustryFocus:
       "Agriculture, Manufacturing, Trade  and related related value chains",
@@ -35,6 +37,7 @@ export const fundingPrograms = [
   },
   {
     NameofFund: "Seedstars Africa Ventures",
+    Organization: "Seedstars",
     FundingType: "Equity Investment",
     BusinessStage: "Early to Growth-Stage",
     IndustryFocus: "Technology",
@@ -50,6 +53,7 @@ export const fundingPrograms = [
   },
   {
     NameofFund: "Africa Enterprise Challenge Fund (AECF)",
+    Organization: "Africa Enterprise Challenge Fund",
     FundingType: "Grant/Loan",
     BusinessStage: "Growth-Stage",
     IndustryFocus: "Agribusiness, Renewable Energy",
@@ -65,6 +69,7 @@ export const fundingPrograms = [
   },
   {
     NameofFund: "Anzisha Prize",
+    Organization: "African Leadership Academy",
     FundingType: "Grant",
     BusinessStage: "Early-Stage",
     IndustryFocus: "All Industries",
@@ -80,6 +85,7 @@ export const fundingPrograms = [
   },
   {
     NameofFund: "GroFin Small and Growing Business Fund",
+    Organization: "Grofin",
     FundingType: "Loan",
     BusinessStage: "Early to Growth-Stage",
     IndustryFocus: "Education, Healthcare, Agribusiness",
@@ -95,6 +101,7 @@ export const fundingPrograms = [
   },
   {
     NameofFund: "Orange Social Venture Prize Africa & Middle East",
+    Organization: "Orange Group",
     FundingType: "Grant",
     BusinessStage: "Early-Stage",
     IndustryFocus: "Social Innovation",
@@ -109,7 +116,8 @@ export const fundingPrograms = [
     DurationofSupport: "One-Time",
   },
   {
-    NameofFund: "Innovation Prize for Africa",
+    NameofFund: "African Innovation Hub Fund (AIHF)",
+    Organization: "African Innovation Hub",
     FundingType: "Grant",
     BusinessStage: "All Stages",
     IndustryFocus: "All Industries",
@@ -125,6 +133,7 @@ export const fundingPrograms = [
   },
   {
     NameofFund: "She Leads Africa Accelerator",
+    Organization: "She Leads Africa",
     FundingType: "Grant",
     BusinessStage: "Early-Stage",
     IndustryFocus: "All Industries",
@@ -139,7 +148,9 @@ export const fundingPrograms = [
     DurationofSupport: "3 Months",
   },
   {
-    NameofFund: "African Women's Development Fund Grants",
+    NameofFund:
+      "African Development Bank’s Affirmative Finance Action for Women in Africa (AFAWA)",
+    Organization: "African Development Bank (AfDB)",
     FundingType: "Grant",
     BusinessStage: "All Stages",
     IndustryFocus: "Women's Rights, Health",
@@ -155,6 +166,7 @@ export const fundingPrograms = [
   },
   {
     NameofFund: "Acumen Fund",
+    Organization: "Acumen",
     FundingType: "Equity Investment",
     BusinessStage: "Growth-Stage",
     IndustryFocus: "Agriculture, Energy",
@@ -170,6 +182,7 @@ export const fundingPrograms = [
   },
   {
     NameofFund: "YouthStart Challenge Fund",
+    Organization: "United Nations Capital Development Fund",
     FundingType: "Grant",
     BusinessStage: "Early-Stage",
     IndustryFocus: "All Industries",
@@ -185,6 +198,7 @@ export const fundingPrograms = [
   },
   {
     NameofFund: "UNDP Growth Stage Impact Ventures for SDGs Initiative (GSIV)",
+    Organization: "UNDP",
     FundingType: "Equity Investment",
     BusinessStage: "Growth-Stage",
     IndustryFocus: "Agriculture, Education, Renewable Energy",
@@ -200,6 +214,7 @@ export const fundingPrograms = [
   },
   {
     NameofFund: "African Innovation Hub Fund (AIHF)",
+    Organization: "African Innovation Hub",
     FundingType: "Grant/Loan",
     BusinessStage: "Early-Stage",
     IndustryFocus: "Technology, Social Impact",
@@ -216,6 +231,7 @@ export const fundingPrograms = [
   },
   {
     NameofFund: "Mastercard Foundation’s Fund for Rural Prosperity",
+    Organization: "Mastercard Foundation",
     FundingType: "Grant",
     BusinessStage: "Growth-Stage",
     IndustryFocus: "Financial Inclusion, Agriculture",
@@ -231,6 +247,7 @@ export const fundingPrograms = [
   },
   {
     NameofFund: "Angel Fair Africa Fund",
+    Organization: "Angel Fair Africa",
     FundingType: "Equity Investment",
     BusinessStage: "Early-Stage",
     IndustryFocus: "All Industries",
@@ -248,6 +265,7 @@ export const fundingPrograms = [
   {
     NameofFund:
       "African Development Bank’s Affirmative Finance Action for Women in Africa (AFAWA)",
+    Organization: "African Development Bank",
     FundingType: "Loan Guarantee/Grant",
     BusinessStage: "Early to Growth-Stage",
     IndustryFocus: "All Industries",

@@ -20,7 +20,7 @@ export default function EsoModal({ program }: Props) {
         onClick={() => setOpen(true)}
         className="text-[#80C22F] whitespace-nowrap border border-[#80C22F] px-3 py-2 text-xs sm:px-4 sm:py-3 rounded-md"
       >
-        View Details
+        View
       </button>
 
       {/* Modal */}

@@ -113,36 +113,40 @@ const FundingTable = () => {
       <table className="w-full max-w-screen">
         <thead className="bg-[#80C22F] text-white  font-semibold sm:font-bold text-sm sm:text-lg">
           <tr>
-            <th className="sm:p-3 py-2 text-left">Name</th>
-            <th className="p-3  text-left hidden sm:table-cell">Industry</th>
-            <th className="p-3  text-left hidden sm:table-cell">Region</th>
+            <th className="sm:p-3 py-2 text-left">Name of Fund</th>
+            <th className="p-3  text-left hidden sm:table-cell">
+              Organization
+            </th>
             <th className="p-3  text-left hidden sm:table-cell">
               Business Stage
             </th>
             <th className="sm:py-3 py-2  text-left">Funding Type</th>
             <th className="p-3  text-left hidden sm:table-cell">Amount</th>
+            <th className="p-3  text-left hidden sm:table-cell">
+              Eligibility Criteria
+            </th>
             <th className="sm:p-3 py-2 text-left ">Actions</th>
           </tr>
         </thead>
         <tbody>
           {data?.map((program, index) => (
             <tr key={index} className="border-b border-[#D5D5D5]">
-              <td className="p-3">{program.NameofFund}</td>
-              <td className="p-3 hidden sm:table-cell">
-                {program.IndustryFocus}
+              <td className="p-3 text-sm ">{program.NameofFund}</td>
+              <td className="p-3 text-sm  hidden sm:table-cell">
+                {program.Organization}
               </td>
-              <td className="p-3 hidden sm:table-cell">
-                {program.CountryRegionFocus}
-              </td>
-              <td className="p-3 hidden sm:table-cell">
+              <td className="p-3 text-sm  hidden sm:table-cell">
                 {program.BusinessStage}
               </td>
-              <td className="p-3">
+              <td className="p-3 text-sm ">
                 {program.FundingType}
                 <p className=" sm:hidden ">{program.FundingAmountRange}</p>
               </td>
-              <td className="p-3 hidden sm:table-cell">
+              <td className="p-3 text-sm  hidden sm:table-cell">
                 {program.FundingAmountRange}
+              </td>
+              <td className="p-3  text-sm  hidden sm:table-cell">
+                {program.EligibilityCriteria}
               </td>
               <td className="p-3">
                 <FundingModal program={program} />

@@ -23,10 +23,11 @@ const CTA = () => {
           {/* Text Overlay */}
           <div className="absolute inset-0 flex flex-col gap-2 sm:gap-4 items-center justify-center bg-black bg-opacity-50 text-white text-center px-4">
             <h2 className="text-sm sm:text-2xl lg:text-3xl font-bold">
-              🚀Start Your Entrepreneurial Journey Today
+              🚀Join the Community
             </h2>
             <p className="text-sm sm:text-lg">
-              Sign up now and take your first step!
+              Join our community of entrepreneurs and gain the resources,
+              insights and connections you need to succeed!
             </p>
             <button
               onClick={() => router.push("/auth/register")}
