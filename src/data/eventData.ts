@@ -1,5 +1,16 @@
 export const eventData = [
   {
+    date: "Feb 19-20, 2025",
+    title: "Africa Agri Expo",
+    datetime: "MONDAY, F 2ND, 2024 | 9AM - 5PM",
+    location: "Nairobi, Kenya",
+    description:
+      "Africa Agri Expo highlights agricultural innovations and market opportunities across Africa, fostering collaboration between local and global industry leaders. Attendees can explore sustainable farming solutions and trade opportunities.",
+    image: "/event-banner.png",
+    calendarLink: "/add-to-calendar",
+    moreInfoLink: "https://africa-agriexpo.com/index.html",
+  },
+  {
     date: "06 OCTOBER",
     title: "Startup Success Bootcamp",
     datetime: "THURSDAY, OCTOBER 6TH, 2024 | 10AM - 12PM",

@@ -1,5 +1,22 @@
 export const fundingPrograms = [
   {
+    NameofFund: "MIC Khulisani Ventures",
+    FundingType: "Equity Investment",
+    Organization: "MIC Khulisani Ventures",
+    BusinessStage: "Early stage",
+    IndustryFocus: "Diverse",
+    FundingAmountRange: "R30 million+",
+    EligibilityCriteria:
+      "Open to all sectors except: fast food franchises, seed stage investments, primary agriculture and businesses that are historically dependent on grants.",
+    WebsiteLink: "https://khulisani.mic.co.za/",
+    NonMonetarySupport: "",
+    ApplicationDeadline: "",
+    ApplicationFrequency: "Rolling",
+    CountryRegionFocus: "South Africa",
+    PastRecipients: "",
+    DurationofSupport: "Ongoing",
+  },
+  {
     NameofFund: "Tony Elumelu Foundation Entrepreneurship Programme",
     FundingType: "Grant",
     Organization: "Tony Elumelu Foundation",

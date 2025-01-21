@@ -5,6 +5,22 @@ import EventListing from "@/components/EventListing";
 
 const events = [
   {
+    Event: "Africa Agri Expo",
+    Location: "Nairobi, Kenya",
+    Date: "Feb 19-20, 2025",
+    Time: "9:00 AM - 5:00 PM",
+    Link: "https://africa-agriexpo.com/index.html",
+    Image: "/eventsbanner.jpg",
+  },
+  {
+    Event: "Ghana AI Summit and Awards",
+    Location: "Accra, Ghana",
+    Date: "Mar 27, 2025",
+    Time: "9:00 AM - 5:00 PM",
+    Link: "https://www.artificialintelligenceghana.com/",
+    Image: "/eventsbanner.jpg",
+  },
+  {
     Event: "SMEFest 2025 – Towards A Trillion Dollar SME Economy",
     Location: "Lagos, Nigeria",
     Date: "18-Jan-25",

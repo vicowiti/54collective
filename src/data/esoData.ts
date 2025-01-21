@@ -16,6 +16,76 @@ export type ESOData = {
 
 export const esoData: ESOData[] = [
   {
+    ProgramName: "Aspire Business Growth Program",
+    Organization: "African Management Institute (AMI) + Stanford Seed",
+    TypeofSupport: "Skills, Tools & Strategies to Accelerate Business Growth",
+    WebsiteLink:
+      "https://www.surveymonkey.com/r/NTBY65Y?utm_source=techsafari.beehiiv.com&utm_medium=newsletter&utm_campaign=this-week-in-african-tech&_bhlid=25b4ec068f0ef51a78f857fe048eadf6f86df649",
+    Industry: "",
+    RegionalFocus: "Pan African",
+    TargetEntrepreneurs: "Early-stage founders and business owners",
+    EligibilityCriteria: `
+    This programme is designed for businesses that meet the following criteria:
+a) Generate more than $30,000 in annual business revenue
+b) Have been operational for more than 1 year
+c) Have 3 or more paid employees"
+
+    `,
+    ProgramDuration: "6 months",
+    ModeofDelivery: "Online",
+    Fees: "650$",
+    ImpactMetrics: "",
+    ApplicationProcess: "Application Form",
+  },
+  {
+    ProgramName: "Women Techsters Fellowship",
+    Organization: "The Women Techsters Initiative",
+    TypeofSupport: "Training and Mentorship",
+    WebsiteLink: "https://www.womentechsters.org/programs",
+    Industry: "",
+    RegionalFocus: "Pan African",
+    TargetEntrepreneurs: "Women",
+    EligibilityCriteria: "",
+    ProgramDuration: "1 Year",
+    ModeofDelivery: "Online",
+    Fees: "Free",
+    ImpactMetrics: "",
+    ApplicationProcess: "",
+  },
+  {
+    ProgramName: "Clean Energy & Mobility Innovation Program",
+    Organization: "Delta 40 Venture Studio",
+    TypeofSupport: "workshops, mentorship and grants",
+    WebsiteLink:
+      "https://docs.google.com/forms/d/e/1FAIpQLSdIPKEJ93j0ftUBvso-dL7ZVgG7AdFtupowsOYpHn9btro7sA/viewform",
+    Industry: "Energy and Mobility",
+    RegionalFocus: "East Africa and Nigeria",
+    TargetEntrepreneurs: "Researchers and founders",
+    EligibilityCriteria: "",
+    ProgramDuration: "10 months",
+    ModeofDelivery: "",
+    Fees: "Free",
+    ImpactMetrics: "",
+    ApplicationProcess: "",
+  },
+  {
+    ProgramName: "Timbuktoo MineTech Accelerator Programme",
+    Organization: "MineTech Hub",
+    TypeofSupport: "Mentorship, funding, and link to global networks",
+    WebsiteLink:
+      "https://docs.google.com/forms/d/e/1FAIpQLSdIPKEJ93j0ftUBvso-dL7ZVgG7AdFtupowsOYpHn9btro7sA/viewform",
+    Industry: "Mining Industry",
+    RegionalFocus: "Pan-African",
+    TargetEntrepreneurs: "Pre-seed and Seed Stage",
+    EligibilityCriteria:
+      "Startups which are registered and operating within Africa with founders who are nationals of an African country and domiciled in Africa",
+    ProgramDuration: "",
+    ModeofDelivery: "",
+    Fees: "Free",
+    ImpactMetrics: "",
+    ApplicationProcess: "",
+  },
+  {
     ProgramName: "Expore Program",
     Organization: "54 Collective",
     TypeofSupport: "Entrepreneur Training",
